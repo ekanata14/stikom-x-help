@@ -17,9 +17,16 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'id_user_type',
+        'first_name',
+        'last_name',
+        'complete_name',
         'email',
         'password',
+        'mobile_phone',
+        'institution',
+        'front_degree',
+        'back_degree',
     ];
 
     /**
@@ -43,5 +50,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function userType()
+    {
+        return $this->belongsTo(UserType::class, 'id_user_type');
     }
 }

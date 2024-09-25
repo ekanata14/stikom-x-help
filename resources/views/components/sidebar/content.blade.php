@@ -8,9 +8,17 @@
 
     <x-sidebar.link title="Admin" href="{{ route('admin') }}" :isActive="request()->routeIs('admin')">
     </x-sidebar.link>
-    <x-sidebar.link title="Users" href="{{ route('users') }}" :isActive="request()->routeIs('users')">
+    <x-sidebar.link title="Users" href="{{ route('users.index') }}" :isActive="request()->routeIs('users.index')">
     </x-sidebar.link>
     <x-sidebar.link title="User Types" href="{{ route('user-types') }}" :isActive="request()->routeIs('user-types')">
+    </x-sidebar.link>
+    <x-sidebar.link title="Products" href="{{ route('user-types') }}" :isActive="request()->routeIs('products')">
+    </x-sidebar.link>
+    <x-sidebar.link title="Carts" href="{{ route('user-types') }}" :isActive="request()->routeIs('carts')">
+    </x-sidebar.link>
+    <x-sidebar.link title="Purchases" href="{{ route('user-types') }}" :isActive="request()->routeIs('purchases')">
+    </x-sidebar.link>
+    <x-sidebar.link title="Check In" href="{{ route('user-types') }}" :isActive="request()->routeIs('check-in')">
     </x-sidebar.link>
 
     <x-sidebar.dropdown title="Buttons" :active="Str::startsWith(request()->route()->uri(), 'buttons')">

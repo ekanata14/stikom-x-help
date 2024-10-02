@@ -9,8 +9,8 @@
         <div class="w-full mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <x-button href="{{ route('user-types.create') }}" variant="primary" class="justify-center max-w-xs gap-2">
-                        <span>Add User Type</span>
+                    <x-button href="{{ route('products.create') }}" variant="primary" class="justify-center max-w-xs gap-2">
+                        <span>Add Product</span>
                     </x-button>
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-3">
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -21,7 +21,17 @@
                                         No
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Type Name
+                                        Product Name
+                                    </th>
+                                    <th>User Type</th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Description
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Price
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Qouta
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         Actions
@@ -29,7 +39,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($userTypes as $item)
+                                @forelse ($products as $item)
                                     <tr
                                         class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                                         <th scope="row"
@@ -37,14 +47,26 @@
                                             {{ $loop->iteration }}
                                         </th>
                                         <td class="px-6 py-4">
-                                            {{ $item->type_name }}
+                                            {{ $item->name }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ $item->UserType->type_name }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ $item->description }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ 'IDR ' . number_format($item->price, 0, ',', '.') }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ $item->qouta }}
                                         </td>
                                         <td class="px-6 py-4 flex gap-4">
-                                            <x-button href="{{ route('user-types.edit', $item->id) }}" variant="warning"
+                                            <x-button href="{{ route('products.edit', $item->id) }}" variant="warning"
                                                 class="justify-center max-w-xs gap-2">
                                                 <span>Edit</span>
                                             </x-button>
-                                            <form action="{{ route('user-types.destroy', $item->id) }}" method="POST"
+                                            <form action="{{ route('products.destroy', $item->id) }}" method="POST"
                                                 onsubmit="return confirm('{{ __('Are you sure you want to delete this user?') }}');">
                                                 @csrf
                                                 @method('DELETE')

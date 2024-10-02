@@ -19,15 +19,18 @@ class UsersController extends Controller
     {
         $viewData = [
             'title' => 'Users Management',
+            'activePage' => 'users',
             'users' => User::where('id_user_type', '!=', 1)->paginate(10),
         ];
 
         return view('admin-dashboard.users.index', $viewData);
     }
 
-    public function admin(){
+    public function admin()
+    {
         $viewData = [
             'title' => 'Admin Management',
+            'activePage' => 'admin',
             'users' => User::where('id_user_type', 1)->paginate(10),
         ];
 
@@ -40,7 +43,8 @@ class UsersController extends Controller
     public function create()
     {
         $viewData = [
-            'Add User',
+            'title' => 'Add User',
+            'activePage' => 'users',
             'userTypes' => UserType::where('id', '!=', 1)->get(),
         ];
 
@@ -95,12 +99,14 @@ class UsersController extends Controller
      */
     public function edit(string $id)
     {
+        $viewData = [
+            'title' => 'Edit User',
+            'activePage' => 'users',
+            'user' => User::findOrFail($id),
+            'userTypes' => UserType::where('id', '!=', 1)->get(),
+        ];
 
-        // Mengambil data pengguna dan jenis pengguna
-        $user = User::findOrFail($id);
-        $userTypes = UserType::where('id', '!=', 1)->get();
-
-        return view('admin-dashboard.users.edit', compact('user', 'userTypes'));
+        return view('admin-dashboard.users.edit', $viewData);
     }
 
     // Memperbarui data pengguna

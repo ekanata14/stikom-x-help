@@ -8,20 +8,20 @@
 
     <x-sidebar.link title="Admin" href="{{ route('users.admin') }}" :isActive="request()->routeIs('users.admin')">
     </x-sidebar.link>
-    <x-sidebar.link title="Users" href="{{ route('users.index') }}" :isActive="request()->routeIs('users.index')">
+    <x-sidebar.link title="Users" href="{{ route('users.index') }}" :isActive="request()->routeIs('users.index') || request()->routeIs('users.create') || request()->routeIs('users.edit')">
     </x-sidebar.link>
-    <x-sidebar.link title="User Types" href="{{ route('user-types.index') }}" :isActive="request()->routeIs('user-types')">
+    <x-sidebar.link title="User Types" href="{{ route('user-types.index') }}" :isActive="request()->routeIs('user-types.index') || request()->routeIs('user-types.create') || request()->routeIs('user-types.edit')">
     </x-sidebar.link>
-    <x-sidebar.link title="Products" href="{{ route('user-types.index') }}" :isActive="request()->routeIs('products')">
+    <x-sidebar.link title="Products" href="{{ route('products.index') }}" :isActive="request()->routeIs('products.index')">
     </x-sidebar.link>
     <x-sidebar.link title="Carts" href="{{ route('user-types.index') }}" :isActive="request()->routeIs('carts')">
     </x-sidebar.link>
-    <x-sidebar.link title="Purchases" href="{{ route('user-types.index') }}" :isActive="request()->routeIs('purchases')">
+    <x-sidebar.link title="Purchases" href="{{ route('purchase.index') }}" :isActive="request()->routeIs('purchase.index')">
     </x-sidebar.link>
     <x-sidebar.link title="Check In" href="{{ route('user-types.index') }}" :isActive="request()->routeIs('check-in')">
     </x-sidebar.link>
 
-    <x-sidebar.dropdown title="Buttons" :active="Str::startsWith(request()->route()->uri(), 'buttons')">
+    {{-- <x-sidebar.dropdown title="Buttons" :active="Str::startsWith(request()->route()->uri(), 'buttons')">
         <x-slot name="icon">
             <x-heroicon-o-view-grid class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
         </x-slot>
@@ -29,6 +29,6 @@
         <x-sidebar.sublink title="Text button" href="{{ route('buttons.text') }}" :active="request()->routeIs('buttons.text')" />
         <x-sidebar.sublink title="Icon button" href="{{ route('buttons.icon') }}" :active="request()->routeIs('buttons.icon')" />
         <x-sidebar.sublink title="Text with icon" href="{{ route('buttons.text-icon') }}" :active="request()->routeIs('buttons.text-icon')" />
-    </x-sidebar.dropdown>
+    </x-sidebar.dropdown> --}}
 
 </x-perfect-scrollbar>

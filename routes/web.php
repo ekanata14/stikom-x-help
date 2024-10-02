@@ -5,7 +5,11 @@ use App\Http\Controllers\ProfileController;
 
 // Admin
 use App\Http\Controllers\Admin\UsersController;
-use App\Http\Controllers\UserTypeController;
+use App\Http\Controllers\Admin\UserTypeController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\CartController;
+use App\Http\Controllers\Admin\CartItemController;
+use App\Http\Controllers\Admin\PurchaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,16 +31,53 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'verified'])->group(function () {
+
+    // User Routes
     Route::get('/users', [UsersController::class, 'index'])->name('users.index');
     Route::get('/users/admin', [UsersController::class, 'admin'])->name('users.admin');
     Route::get('/users/create', [UsersController::class, 'create'])->name('users.create');
     Route::post('/users', [UsersController::class, 'store'])->name('users.store');
     Route::get('/users/{user}', [UsersController::class, 'show'])->name('users.show');
     Route::get('/users/{user}/edit', [UsersController::class, 'edit'])->name('users.edit');
-    Route::put('/users/{user}', [UsersController::class, 'update'])->name('users.update');
+    Route::post('/users/{user}', [UsersController::class, 'update'])->name('users.update');
     Route::delete('/users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
 
+    // User Type Routes
     Route::get('/user-types', [UserTypeController::class, 'index'])->name('user-types.index');
+    Route::get('/user-types/create', [UserTypeController::class, 'create'])->name('user-types.create');
+    Route::post('/user-types', [UserTypeController::class, 'store'])->name('user-types.store');
+    Route::get('/user-types/edit/{id}', [UserTypeController::class, 'edit'])->name('user-types.edit');
+    Route::post('/user-types/update', [UserTypeController::class, 'update'])->name('user-types.update');
+    Route::delete('/user-types/{id}', [UserTypeController::class, 'destroy'])->name('user-types.destroy');
+
+    // Cart Routes
+    Route::get('carts', [CartController::class, 'index'])->name('carts.index');      // Menampilkan semua carts
+    Route::get('carts/create', [CartController::class, 'create'])->name('carts.create'); // Form untuk membuat cart baru
+    Route::post('carts', [CartController::class, 'store'])->name('carts.store');      // Menyimpan cart baru
+    Route::get('carts/{cart}/edit', [CartController::class, 'edit'])->name('carts.edit'); // Form untuk edit cart
+    Route::post('carts/{cart}', [CartController::class, 'update'])->name('carts.update');  // Memperbarui data cart
+    Route::delete('carts/{cart}', [CartController::class, 'destroy'])->name('carts.destroy'); // Menghapus cart
+
+    // CartItem Routes
+    Route::post('cart-items', [CartItemController::class, 'store'])->name('cart-items.store'); // Menambah item ke cart
+    Route::post('cart-items/{cartItem}', [CartItemController::class, 'update'])->name('cart-items.update'); // Memperbarui item di cart
+    Route::delete('cart-items/{cartItem}', [CartItemController::class, 'destroy'])->name('cart-items.destroy'); // Menghapus item dari cart
+
+    // Product Routes
+    Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+    Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+    Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+    Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name('products.edit');
+    Route::post('/products/update', [ProductController::class, 'update'])->name('products.update');
+    Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+
+    // Purchase Routes
+    Route::get('/purchase', [PurchaseController::class, 'index'])->name('purchase.index');
+    Route::get('/purchase/create', [PurchaseController::class, 'create'])->name('purchase.create');
+    Route::post('/purchase', [PurchaseController::class, 'store'])->name('purchase.store');
+    Route::get('/purchase/edit/{id}', [PurchaseController::class, 'edit'])->name('purchase.edit');
+    Route::post('/purchase/update', [PurchaseController::class, 'update'])->name('purchase.update');
+    Route::delete('/purchase/{id}', [PurchaseController::class, 'destroy'])->name('purchase.destroy');
 });
 
 

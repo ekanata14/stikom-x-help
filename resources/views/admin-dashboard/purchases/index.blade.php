@@ -9,9 +9,6 @@
         <div class="w-full mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <x-button href="{{ route('user-types.create') }}" variant="primary" class="justify-center max-w-xs gap-2">
-                        <span>Add User Type</span>
-                    </x-button>
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-3">
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                             <thead
@@ -21,7 +18,22 @@
                                         No
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Type Name
+                                        Invoice ID
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Email
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Total Price
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Status
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Payment Method
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Payment Status
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         Actions
@@ -29,7 +41,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($userTypes as $item)
+                                @forelse ($purchases as $purchase)
                                     <tr
                                         class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                                         <th scope="row"
@@ -37,15 +49,31 @@
                                             {{ $loop->iteration }}
                                         </th>
                                         <td class="px-6 py-4">
-                                            {{ $item->type_name }}
+                                            {{ $purchase->invoice_id }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ $purchase->user->email }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ 'IDR ' . number_format($purchase->total_price, 0, ',', '.') }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ ucfirst($purchase->status) }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ $purchase->payment_method }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ ucfirst($purchase->payment_status) }}
                                         </td>
                                         <td class="px-6 py-4 flex gap-4">
-                                            <x-button href="{{ route('user-types.edit', $item->id) }}" variant="warning"
-                                                class="justify-center max-w-xs gap-2">
+                                            <x-button href="{{ route('purchase.edit', $purchase->id) }}"
+                                                variant="warning" class="justify-center max-w-xs gap-2">
                                                 <span>Edit</span>
                                             </x-button>
-                                            <form action="{{ route('user-types.destroy', $item->id) }}" method="POST"
-                                                onsubmit="return confirm('{{ __('Are you sure you want to delete this user?') }}');">
+                                            <form action="{{ route('purchase.destroy', $purchase->id) }}"
+                                                method="POST"
+                                                onsubmit="return confirm('{{ __('Are you sure you want to delete this purchase?') }}');">
                                                 @csrf
                                                 @method('DELETE')
 
@@ -58,7 +86,8 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="6" class="px-6 py-4 text-center text-gray-500">No users found.
+                                        <td colspan="9" class="px-6 py-4 text-center text-gray-500">No purchases
+                                            found.
                                         </td>
                                     </tr>
                                 @endforelse
@@ -68,7 +97,5 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>
     </div>
 </x-app-layout>

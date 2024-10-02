@@ -25,6 +25,15 @@ class UsersController extends Controller
         return view('admin-dashboard.users.index', $viewData);
     }
 
+    public function admin(){
+        $viewData = [
+            'title' => 'Admin Management',
+            'users' => User::where('id_user_type', 1)->paginate(10),
+        ];
+
+        return view('admin-dashboard.users.index', $viewData);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

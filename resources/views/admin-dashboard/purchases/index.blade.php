@@ -57,17 +57,25 @@
                                         <td class="px-6 py-4">
                                             {{ 'IDR ' . number_format($purchase->total_price, 0, ',', '.') }}
                                         </td>
-                                        <td class="px-6 py-4">
+                                        <td
+                                            class="px-6 py-4 font-bold @if ($purchase->status == 'paid') text-green-500 
+                                            @elseif ($purchase->status == 'cancelled') text-red-500
+                                        @else
+                                            text-yellow-500 @endif">
                                             {{ ucfirst($purchase->status) }}
                                         </td>
                                         <td class="px-6 py-4">
                                             {{ $purchase->payment_method }}
                                         </td>
-                                        <td class="px-6 py-4">
+                                        <td
+                                            class="px-6 py-4 font-bold @if ($purchase->payment_status == 'success') text-green-500 
+                                            @elseif ($purchase->payment_status == 'failed') text-red-500                                            
+                                      @else
+                                           text-yellow-500 @endif">
                                             {{ ucfirst($purchase->payment_status) }}
                                         </td>
                                         <td class="px-6 py-4 flex gap-4">
-                                            @if ($purchase->status == 'paid')
+                                            {{-- @if ($purchase->status == 'paid')
                                                 <form action="{{ route('purchase.unverify') }}" method="POST"
                                                     onsubmit="return confirm('{{ __('Are you sure you want to unverify this purchase?') }}');">
                                                     @csrf
@@ -111,13 +119,13 @@
                                                         </x-button>
                                                     </form>
                                                 @endif
-                                            @endif
+                                            @endif --}}
                                             <!-- Modal toggle -->
                                             <button data-modal-target="receipt-modal->{{ $purchase->id }}"
                                                 data-modal-toggle="receipt-modal->{{ $purchase->id }}"
                                                 class="text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-blue-800"
                                                 type="button">
-                                                Payment Receipt
+                                                Receipt & Verify
                                             </button>
 
                                             <!-- Main modal -->
@@ -132,7 +140,7 @@
                                                             class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                                                             <h3
                                                                 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                                                Terms of Service
+                                                                Payment Receipt
                                                             </h3>
                                                             <button type="button"
                                                                 class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -148,13 +156,67 @@
                                                             </button>
                                                         </div>
                                                         <!-- Modal body -->
-                                                        <div class="p-4 md:p-5 space-y-4">
+                                                        <div class="p-4 md:p-5 space-y-4 flex justify-center">
                                                             <img src="{{ route('purchase.receipt.admin', ['id' => $purchase->id]) }}"
-                                                                alt="Receipt Image">
+                                                                alt="Receipt Image" class="h-[500px]">
                                                         </div>
                                                         <!-- Modal footer -->
                                                         <div
-                                                            class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                                            class="flex items-center justify-end p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600 gap-2">
+                                                            @if ($purchase->status == 'paid')
+                                                                <form action="{{ route('purchase.unverify') }}"
+                                                                    method="POST"
+                                                                    onsubmit="return confirm('{{ __('Are you sure you want to unverify this purchase?') }}');">
+                                                                    @csrf
+                                                                    <input type="hidden" name="id"
+                                                                        value="{{ $purchase->id }}">
+                                                                    <x-button variant="danger">
+                                                                        <x-heroicon-o-x class="w-5 h-5"
+                                                                            aria-hidden="true" />
+                                                                        {{ __('Unverify') }}
+                                                                    </x-button>
+                                                                </form>
+                                                            @else
+                                                                @if ($purchase->status == 'cancelled')
+                                                                    <form action="{{ route('purchase.uncancel') }}"
+                                                                        method="POST"
+                                                                        onsubmit="return confirm('{{ __('Are you sure you want to uncancel this purchase?') }}');">
+                                                                        @csrf
+                                                                        <input type="hidden" name="id"
+                                                                            value="{{ $purchase->id }}">
+                                                                        <x-button variant="danger">
+                                                                            <x-heroicon-o-x class="w-5 h-5"
+                                                                                aria-hidden="true" />
+                                                                            {{ __('Uncancel') }}
+                                                                        </x-button>
+                                                                    </form>
+                                                                @else
+                                                                    <form action="{{ route('purchase.verify') }}"
+                                                                        method="POST"
+                                                                        onsubmit="return confirm('{{ __('Are you sure you want to verify this purchase?') }}');">
+                                                                        @csrf
+                                                                        <input type="hidden" name="id"
+                                                                            value="{{ $purchase->id }}">
+                                                                        <x-button variant="info">
+                                                                            <x-heroicon-o-check class="w-5 h-5"
+                                                                                aria-hidden="true" />
+                                                                            {{ __('Verify') }}
+                                                                        </x-button>
+                                                                    </form>
+                                                                    <form action="{{ route('purchase.cancel') }}"
+                                                                        method="POST"
+                                                                        onsubmit="return confirm('{{ __('Are you sure you want to cancel this purchase?') }}');">
+                                                                        @csrf
+                                                                        <input type="hidden" name="id"
+                                                                            value="{{ $purchase->id }}">
+                                                                        <x-button variant="danger">
+                                                                            <x-heroicon-o-x class="w-5 h-5"
+                                                                                aria-hidden="true" />
+                                                                            {{ __('Cancel') }}
+                                                                        </x-button>
+                                                                    </form>
+                                                                @endif
+                                                            @endif
                                                             <button
                                                                 data-modal-hide="receipt-modal->{{ $purchase->id }}"
                                                                 type="button"
@@ -180,18 +242,18 @@
                                             </form> --}}
                                         </td>
                                     </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="9" class="px-6 py-4 text-center text-gray-500">No purchases
-                                            found.
-                                        </td>
-                                    </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
+                                    @empty
+                                        <tr>
+                                            <td colspan="9" class="px-6 py-4 text-center text-gray-500">No purchases
+                                                found.
+                                            </td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</x-app-layout>
+    </x-app-layout>

@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
+use App\Models\Purchase;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+
+        // Share the variable with all views
+        $pendingPurchasesCount = Purchase::where('status', 'pending')->count();
+        View::share('pendingPurchasesCount', $pendingPurchasesCount);
     }
 }

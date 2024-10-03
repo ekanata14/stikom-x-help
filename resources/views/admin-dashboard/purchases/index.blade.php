@@ -46,7 +46,7 @@
                                         class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                                         <th scope="row"
                                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            {{ $loop->iteration }}
+                                            {{ $loop->iteration + ($purchases->currentPage() - 1) * $purchases->perPage() }}
                                         </th>
                                         <td class="px-6 py-4">
                                             {{ $purchase->invoice_id }}
@@ -242,18 +242,22 @@
                                             </form> --}}
                                         </td>
                                     </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="9" class="px-6 py-4 text-center text-gray-500">No purchases
-                                                found.
-                                            </td>
-                                        </tr>
-                                    @endforelse
-                                </tbody>
-                            </table>
-                        </div>
+                                @empty
+                                    <tr>
+                                        <td colspan="9" class="px-6 py-4 text-center text-gray-500">No purchases
+                                            found.
+                                        </td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Pagination Links -->
+                    <div class="mt-4">
+                        {{ $purchases->links() }} <!-- Menampilkan link pagination -->
                     </div>
                 </div>
             </div>
         </div>
-    </x-app-layout>
+    </div>
+</x-app-layout>

@@ -20,7 +20,7 @@ class PurchaseController extends Controller
         $viewData = [
             'title' => 'Purchase Management',
             'activePage' => 'purchases',
-            'purchases' => Purchase::with(['cart', 'user'])->orderByDesc('created_at')->get(),
+            'purchases' => Purchase::with(['cart', 'user'])->orderByDesc('created_at')->paginate(10),
         ];
         return view('admin-dashboard.purchases.index', $viewData);
     }

@@ -20,7 +20,7 @@ class PurchaseController extends Controller
         $viewData = [
             'title' => 'Purchase Management',
             'activePage' => 'purchases',
-            'purchases' => Purchase::with(['cart', 'user'])->get(),
+            'purchases' => Purchase::with(['cart', 'user'])->orderByDesc('created_at')->get(),
         ];
         return view('admin-dashboard.purchases.index', $viewData);
     }
@@ -95,7 +95,7 @@ class PurchaseController extends Controller
 
         // Purchase::create($request->all());
 
-        return redirect()->route('user.purchase.upload.receipt', $purchase->id)->with('success', 'Purchase created successfully.');
+        return redirect()->route('user.purchase.upload.receipt', $purchase->id)->with('success', 'Purchase created successfully. Upload your receipt.');
     }
 
     public function uploadReceipt(Request $request)
@@ -112,7 +112,7 @@ class PurchaseController extends Controller
         $purchase->payment_receipt = $imageName;
         $purchase->save();
 
-        return redirect()->route('user.dashboard', $purchase->id)->with('success', 'Receipt uploaded successfully.');
+        return redirect()->route('user.dashboard', $purchase->id)->with('success', 'Receipt uploaded successfully. Welcome to your dashboard.');
     }
 
     public function showReceipt(string $id)

@@ -65,7 +65,7 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         if (Purchase::where('user_id', $user->id)->count() == 0) {
-            return redirect(route('user.purchase', absolute: false));
+            return redirect(route('user.purchase', absolute: false))->with('success', 'Registration successful. Please make a purchase.');
         } else {
             return redirect(route('user.dashboard', absolute: false));
         }

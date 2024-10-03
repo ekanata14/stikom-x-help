@@ -209,7 +209,7 @@
                             <x-form.error :messages="$errors->get('payment_receipt')" />
                             <input
                                 class="block w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                id="payment_receipt" type="file" name="payme    nt_receipt">
+                                id="payment_receipt" type="file" name="payment_receipt">
                             <button
                                 class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                 Detail

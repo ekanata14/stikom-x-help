@@ -3,7 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 
+// Landing Page Controller
+use App\Http\Controllers\LandingPageController;
+
 // Admin
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\UserTypeController;
 use App\Http\Controllers\Admin\ProductController;
@@ -25,15 +29,18 @@ use App\Http\Controllers\Users\DashboardController as UserDashboardController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('admin-dashboard.dashboard');
-})->middleware(['auth', 'verified', 'AuthAdmin'])->name('dashboard');
+Route::get('/', [LandingPageController::class, 'index'])->name('home');
+Route::get('/accomodation', [LandingPageController::class, 'accomodation'])->name('accomodation');
+Route::get('/commitee', [LandingPageController::class, 'commitee'])->name('commitee');
+Route::get('/general-info', [LandingPageController::class, 'generalInfo'])->name('general-info');
+Route::get('/speakers', [LandingPageController::class, 'speakers'])->name('speakers');
+Route::get('/travel', [LandingPageController::class, 'travel'])->name('travel');
 
 Route::middleware(['auth', 'verified', 'AuthAdmin'])->group(function () {
+
+    // Dashboard Routes
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+
     // User Routes
     Route::get('/users', [UsersController::class, 'index'])->name('users.index');
     Route::get('/users/admin', [UsersController::class, 'admin'])->name('users.admin');
@@ -81,7 +88,7 @@ Route::middleware(['auth', 'verified', 'AuthAdmin'])->group(function () {
     Route::post('/purchase/update', [PurchaseController::class, 'update'])->name('purchase.update');
     Route::delete('/purchase/{id}', [PurchaseController::class, 'destroy'])->name('purchase.destroy');
     Route::post('/purchase/verify', [PurchaseController::class, 'verify'])->name('purchase.verify');
-    Route::post('/purchase/unverify', [PurchaseController::class, 'unverify'])->name('purchase.unverify'); 
+    Route::post('/purchase/unverify', [PurchaseController::class, 'unverify'])->name('purchase.unverify');
     Route::post('/purchase/cancel', [PurchaseController::class, 'cancel'])->name('purchase.cancel');
     Route::post('/purchase/uncancel', [PurchaseController::class, 'uncancel'])->name('purchase.uncancel');
 

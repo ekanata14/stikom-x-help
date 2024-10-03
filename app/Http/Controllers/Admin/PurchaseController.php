@@ -49,7 +49,7 @@ class PurchaseController extends Controller
         $viewData = [
             'title' => 'Upload Receipt',
             'activePage' => 'purchases',
-            'purchase' => Purchase::find($id)->with('cart.cartItems.product')->first(),
+            'purchase' => Purchase::where('id', '=', $id)->with('cart.cartItems.product')->first(),
         ];
         return view('user-dashboard.receipt', $viewData);
     }

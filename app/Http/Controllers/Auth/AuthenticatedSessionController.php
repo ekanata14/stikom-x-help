@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
+// Models
+use App\Models\Purchase;
+
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -28,7 +31,15 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        if (Auth::user()->userType->id === 1) {
+            return redirect()->intended(default: route('dashboard', absolute: false));
+        } else {
+            if (Purchase::where('user_id', Auth::user()->id)->count() != 0) {
+                return redirect()->intended(default: route('user.dashboard', absolute: false));
+            } else {
+                return redirect()->route('user.purchase');
+            }
+        }
     }
 
     /**

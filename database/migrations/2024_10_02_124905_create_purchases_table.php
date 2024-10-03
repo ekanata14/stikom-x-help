@@ -14,9 +14,11 @@ class CreatePurchasesTable extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // FK ke users
             $table->string('invoice_id', 50)->unique(); // ID invoice unik
             $table->decimal('total_price', 10, 2);
+            $table->enum('currency', ['IDR', 'USD'])->default('IDR'); // Mata uang
             $table->enum('status', ['pending', 'paid', 'cancelled'])->default('pending'); // Status pembelian
             $table->string('payment_method', 50); // Metode pembayaran
             $table->enum('payment_status', ['pending', 'success', 'failed'])->default('pending'); // Status pembayaran
+            $table->string('payment_receipt')->nullable(); // Bukti pembayaran
             $table->timestamps(); // created_at & updated_at
         });
     }

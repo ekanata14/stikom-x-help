@@ -26,6 +26,16 @@
                                     </x-form.input-with-icon-wrapper>
                                     <x-form.error :messages="$errors->get('type_name')" />
                                 </div>
+                                <!-- Region -->
+                                <div class="space-y-2">
+                                    <x-form.label for="region" :value="__('Region')" />
+                                    <x-form.select :id="__('region')" :name="__('region')">
+                                        <option value="">{{ __('Region') }}</option>
+                                        <option value="National">National</option>
+                                        <option value="International">International</option>
+                                    </x-form.select>
+                                    <x-form.error :messages="$errors->get('region')" />
+                                </div>
                             </div>
                         </div>
 

@@ -24,6 +24,9 @@
                                         Type Name
                                     </th>
                                     <th scope="col" class="px-6 py-3">
+                                        Region
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
                                         Actions
                                     </th>
                                 </tr>
@@ -38,6 +41,9 @@
                                         </th>
                                         <td class="px-6 py-4">
                                             {{ $item->type_name }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ $item->region }}
                                         </td>
                                         <td class="px-6 py-4 flex gap-4">
                                             <x-button href="{{ route('user-types.edit', $item->id) }}" variant="warning"

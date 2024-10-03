@@ -11,6 +11,9 @@ use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\Admin\CartItemController;
 use App\Http\Controllers\Admin\PurchaseController;
 
+// User
+use App\Http\Controllers\Users\DashboardController as UserDashboardController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,11 +30,10 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return view('admin-dashboard.dashboard');
+})->middleware(['auth', 'verified', 'AuthAdmin'])->name('dashboard');
 
-Route::middleware(['auth', 'verified'])->group(function () {
-
+Route::middleware(['auth', 'verified', 'AuthAdmin'])->group(function () {
     // User Routes
     Route::get('/users', [UsersController::class, 'index'])->name('users.index');
     Route::get('/users/admin', [UsersController::class, 'admin'])->name('users.admin');
@@ -78,6 +80,24 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/purchase/edit/{id}', [PurchaseController::class, 'edit'])->name('purchase.edit');
     Route::post('/purchase/update', [PurchaseController::class, 'update'])->name('purchase.update');
     Route::delete('/purchase/{id}', [PurchaseController::class, 'destroy'])->name('purchase.destroy');
+    Route::post('/purchase/verify', [PurchaseController::class, 'verify'])->name('purchase.verify');
+    Route::post('/purchase/unverify', [PurchaseController::class, 'unverify'])->name('purchase.unverify'); 
+    Route::post('/purchase/cancel', [PurchaseController::class, 'cancel'])->name('purchase.cancel');
+    Route::post('/purchase/uncancel', [PurchaseController::class, 'uncancel'])->name('purchase.uncancel');
+
+    // Payment Receipt Routes
+    Route::get('/purchase/receipt/{id}', [PurchaseController::class, 'showReceipt'])->name('purchase.receipt.admin');
+
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+
+    Route::get('/user/purchase', [PurchaseController::class, 'userPurchase'])->name('user.purchase');
+    Route::get('/user/purchase/upload/receipt/{id}', [PurchaseController::class, 'userUploadReceipt'])->name('user.purchase.upload.receipt');
+    Route::post('/user/purchase', [PurchaseController::class, 'store'])->name('user.purchase.store');
+    Route::post('/user/purchase/upload/receipt', [PurchaseController::class, 'uploadReceipt'])->name('user.purchase.upload.receipt.store');
+    Route::get('/user/purchase/receipt/{id}', [PurchaseController::class, 'showReceipt'])->name('purchase.receipt.user');
 });
 
 

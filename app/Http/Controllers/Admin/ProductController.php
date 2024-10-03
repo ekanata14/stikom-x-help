@@ -39,6 +39,7 @@ class ProductController extends Controller
             'user_type_id' => 'required|exists:user_types,id',
             'name' => 'required|max:100',
             'description' => 'nullable',
+            'currency' => 'required|max:5',
             'price' => 'required|numeric',
             'quota' => 'required|integer',
         ]);
@@ -77,6 +78,7 @@ class ProductController extends Controller
             'user_type_id' => 'required|exists:user_types,id',
             'name' => 'required|max:100',
             'description' => 'nullable',
+            'currency' => 'required|max:5',
             'price' => 'required|numeric',
             'quota' => 'required|integer',
         ]);

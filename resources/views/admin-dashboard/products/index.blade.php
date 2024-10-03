@@ -28,6 +28,9 @@
                                         Description
                                     </th>
                                     <th scope="col" class="px-6 py-3">
+                                        Currency
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
                                         Price
                                     </th>
                                     <th scope="col" class="px-6 py-3">
@@ -54,9 +57,12 @@
                                         </td>
                                         <td class="px-6 py-4">
                                             {{ $item->description }}
+                                        </td> 
+                                        <td class="px-6 py-4">
+                                            {{ $item->currency }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            {{ 'IDR ' . number_format($item->price, 0, ',', '.') }}
+                                            {{ $item->currency }}. {{ number_format($item->price, 0, ',', '.') }}
                                         </td>
                                         <td class="px-6 py-4">
                                             {{ $item->qouta }}
@@ -67,7 +73,7 @@
                                                 <span>Edit</span>
                                             </x-button>
                                             <form action="{{ route('products.destroy', $item->id) }}" method="POST"
-                                                onsubmit="return confirm('{{ __('Are you sure you want to delete this user?') }}');">
+                                                onsubmit="return confirm('{{ __('Are you sure you want to delete this product?') }}');">
                                                 @csrf
                                                 @method('DELETE')
 

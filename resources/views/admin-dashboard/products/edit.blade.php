@@ -57,6 +57,17 @@
                                     <x-form.error :messages="$errors->get('description')" />
                                 </div>
 
+                                <!-- Currency -->
+                                <div class="space-y-2">
+                                    <x-form.label for="currency" :value="__('Currency')" />
+                                    <x-form.select :id="__('currency')" :name="__('currency')">
+                                        <option value="">{{ __('Currency') }}</option>
+                                        <option value="IDR" {{ $product->currency == 'IDR' ? 'selected' : '' }}>IDR</option>
+                                        <option value="USD" {{ $product->currency == 'USD' ? 'selected' : '' }}>USD</option>
+                                    </x-form.select>
+                                    <x-form.error :messages="$errors->get('currency')" />
+                                </div>
+
                                 <!-- Price -->
                                 <div class="space-y-2">
                                     <x-form.label for="price" :value="__('Price')" />

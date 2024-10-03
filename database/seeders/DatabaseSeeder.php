@@ -20,12 +20,30 @@ class DatabaseSeeder extends Seeder
         ]);
 
         UserType::create([
-            'type_name' => 'Lecturer',
+            'type_name' => 'National Industry',
+            'region' => 'National',
         ]);
 
         UserType::create([
-            'type_name' => 'Student',
+            'type_name' => 'National Lecturer',
+            'region' => 'National',
         ]);
+
+        UserType::create([
+            'type_name' => 'National Student',
+            'region' => 'National',
+        ]);
+
+        UserType::create([
+            'type_name' => 'International Industry',
+            'region' => 'International',
+        ]);
+        
+        UserType::create([
+            'type_name' => 'International Lecturer',
+            'region' => 'International',
+        ]);
+
 
         User::create([
             'id_user_type' => 1,

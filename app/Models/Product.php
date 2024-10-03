@@ -13,6 +13,7 @@ class Product extends Model
         'user_type_id',
         'name',
         'description',
+        'currency',
         'price',
         'quota',
     ];

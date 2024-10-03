@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('user_type_id');
             $table->string('name', 100);
             $table->text('description')->nullable();
+            $table->enum('currency', ['IDR', 'USD'])->default('IDR');
             $table->decimal('price', 10, 2);
             $table->integer('quota');
             $table->timestamps();

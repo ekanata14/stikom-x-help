@@ -44,6 +44,7 @@ class UserTypeController extends Controller
     {
         $validatedData = $request->validate([
             'type_name' => 'required|string|max:255',
+            'region' => 'required|string|max:255',
         ]);
 
         UserType::create($validatedData);
@@ -82,10 +83,11 @@ class UserTypeController extends Controller
         $validatedData = $request->validate([
             'id' => 'required',
             'type_name' => 'required|string|max:255',
+            'region' => 'required|string|max:255',
         ]);
 
         UserType::where('id', $validatedData['id'])
-            ->update(['type_name' => $validatedData['type_name']]);
+            ->update(['type_name' => $validatedData['type_name'], 'region' => $validatedData['region']]);
 
         return redirect()->route('user-types.index')->with('success', 'User Type updated successfully.');
     }

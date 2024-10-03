@@ -117,8 +117,11 @@
     </x-button>
 
     <a href="{{ route('dashboard') }}">
+        <div class="flex gap-4 items-center">
         {{-- <x-application-logo aria-hidden="true" class="w-10 h-10" /> --}}
-        <img src="{{ asset('assets/images/stikom-sm.png') }}" alt="stikom-logo" class="h-full">
+            <img src="{{ asset('assets/images/stikom-sm.png') }}" alt="stikom-logo" class="h-full">
+            <img src="{{ asset('assets/images/help-university-logo.jpg') }}" alt="help" class="h-[50px]">
+        </div>
 
         <span class="sr-only">Dashboard</span>
     </a>

@@ -23,7 +23,9 @@ class AppServiceProvider extends ServiceProvider
     {
 
         // Share the variable with all views
-        $pendingPurchasesCount = Purchase::where('status', 'pending')->count();
-        View::share('pendingPurchasesCount', $pendingPurchasesCount);
+        if (! app()->runningInConsole()) {
+            $pendingPurchasesCount = Purchase::where('status', 'pending')->count();
+            View::share('pendingPurchasesCount', $pendingPurchasesCount);
+        }
     }
 }

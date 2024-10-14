@@ -81,7 +81,7 @@
                     <!-- Mobile Phone -->
                     <div class="space-y-2">
                         <div class="flex gap-1">
-                            <x-form.label for="mobile_phone" :value="__('Mobile Phone')" />
+                            <x-form.label for="mobile_phone" :value="__('Mobile Phone (+62/Country Code)')" />
                             <span class="text-red-500">*</span>
                         </div>
 
@@ -92,7 +92,7 @@
 
                             <x-form.input withicon id="mobile_phone" class="block w-full" type="text"
                                 name="mobile_phone" :value="old('mobile_phone')" required
-                                placeholder="{{ __('Mobile Phone') }}" />
+                                placeholder="{{ __('+62888888111') }}" />
                         </x-form.input-with-icon-wrapper>
                     </div>
 

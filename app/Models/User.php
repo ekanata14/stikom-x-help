@@ -25,8 +25,9 @@ class User extends Authenticatable
         'password',
         'mobile_phone',
         'institution',
-        'front_degree',
-        'back_degree',
+        'occupation',
+        'identity_id',
+        'identity_card'
     ];
 
     /**

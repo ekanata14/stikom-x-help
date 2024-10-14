@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rules\Password as RulesPassword;
 
 // Models
 use App\Models\User;
@@ -56,36 +58,40 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'complete_name' => 'required|string|max:255',
-            'id_user_type' => 'required|exists:user_types,id',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:8|confirmed',
-            'mobile_phone' => 'required|string|max:15',
-            'institution' => 'nullable|string|max:255',
-            'front_degree' => 'nullable|string|max:255', // Tambahkan ini
-            'back_degree' => 'nullable|string|max:255', // Tambahkan ini
-        ]);
+        DB::beginTransaction();
+        try {
+            $validatedData = $request->validate([
+                'first_name' => ['required', 'string', 'max:100'],
+                'last_name' => ['required', 'string', 'max:100'],
+                'complete_name' => ['required', 'string', 'max:255'], // Validasi nama lengkap
+                'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+                'mobile_phone' => ['required', 'string', 'max:20'], // Validasi nomor telepon
+                'institution' => ['nullable', 'string', 'max:100'], // Institusi opsional
+                'occupation' => ['nullable', 'string', 'max:50'], // Gelar depan opsional
+                'identity_id' => ['required', 'string', 'max:50'], // Validasi nomor identitas
+                'id_user_type' => ['required', 'exists:user_types,id'], // Pastikan id_user_type ada di tabel user_types
+                'password' => ['required', 'confirmed', RulesPassword::defaults()],
+                'identity_card' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validasi gambar payment_receipt
+            ]);
 
-        User::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'complete_name' => $request->complete_name,
-            'id_user_type' => $request->id_user_type,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'mobile_phone' => $request->mobile_phone,
-            'institution' => $request->institution,
-            'front_degree' => $request->front_degree, // Tambahkan ini
-            'back_degree' => $request->back_degree,   // Tambahkan ini
-            // Pastikan Anda mengisi kolom lain yang diperlukan
-        ]);
+            // Hash password
+            $validatedData['password'] = Hash::make($validatedData['password']);
 
-        return redirect()->route('users.index')->with('success', 'User added successfully.');
+            // Save identity card (if file exists)
+            if ($request->hasFile('identity_card')) {
+                $validatedData['identity_card'] = $request->file('identity_card')->store('identity_cards', 'private');
+            }
+
+            User::create($validatedData);
+
+            DB::commit();
+
+            return redirect()->route('users.index')->with('success', 'User added successfully.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->route('users.index')->with('error', 'User failed to add.');
+        }
     }
-
     /**
      * Display the specified resource.
      */
@@ -112,50 +118,56 @@ class UsersController extends Controller
     // Memperbarui data pengguna
     public function update(Request $request, $id)
     {
-        // Validasi input
-        $validatedData = $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'complete_name' => 'required|string|max:255',
-            'email' => [
-                'required',
-                'string',
-                'email',
-                'max:255',
-                'unique:users,email,' . $id,
-            ],
-            'mobile_phone' => 'required|string|max:20',
-            'institution' => 'nullable|string|max:255',
-            'front_degree' => 'nullable|string|max:50',
-            'back_degree' => 'nullable|string|max:50',
-            'password' => 'nullable|string|min:8|confirmed',
-            'id_user_type' => 'required|exists:user_types,id',
-        ]);
+        DB::beginTransaction();
+        try {
+            // Validasi input
+            $validatedData = $request->validate([
+                'first_name' => 'required|string|max:255',
+                'last_name' => 'required|string|max:255',
+                'complete_name' => 'required|string|max:255',
+                'email' => [
+                    'required',
+                    'string',
+                    'email',
+                    'max:255',
+                    'unique:users,email,' . $id,
+                ],
+                'mobile_phone' => 'required|string|max:20',
+                'institution' => 'nullable|string|max:255',
+                'occupation' => 'nullable|string|max:50',
+                'password' => 'nullable|string|min:8|confirmed',
+                'id_user_type' => 'required|exists:user_types,id',
+                'identity_card' => 'nullable|string|max:255',
+                'identity_id' => 'nullable|string|max:255',
+            ]);
 
-        // Mencari pengguna berdasarkan ID
-        $user = User::findOrFail($id);
+            // Mencari pengguna berdasarkan ID
+            $user = User::findOrFail($id);
 
-        // Mengupdate data pengguna
-        $user->first_name = $validatedData['first_name'];
-        $user->last_name = $validatedData['last_name'];
-        $user->complete_name = $validatedData['complete_name'];
-        $user->email = $validatedData['email'];
-        $user->mobile_phone = $validatedData['mobile_phone'];
-        $user->institution = $validatedData['institution'];
-        $user->front_degree = $validatedData['front_degree'];
-        $user->back_degree = $validatedData['back_degree'];
-        $user->id_user_type = $validatedData['id_user_type'];
+            // Jika password diisi, hash dan simpan
+            if (!empty($validatedData['password']) && $validatedData['password'] != null) {
+                $user->password = Hash::make($validatedData['password']);
+            }
 
-        // Jika password diisi, hash dan simpan
-        if (!empty($validatedData['password']) && $validatedData['password'] != null) {
-            $user->password = Hash::make($validatedData['password']);
+            // Save identity card (if file exists)
+            if ($request->hasFile('identity_card')) {
+                $validatedData['identity_card'] = $request->file('identity_card')->store('identity_cards', 'private');
+            }
+
+            // Mengupdate data pengguna
+            // Hapus password dari validatedData jika tidak diisi
+            unset($validatedData['password']); // Pastikan password tidak disimpan jika tidak ada
+
+            $user->update($validatedData);
+
+            DB::commit();
+
+            // Redirect ke halaman yang diinginkan dengan pesan sukses
+            return redirect()->route('users.index')->with('success', __('User updated successfully.'));
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->route('users.index')->with('error', __('User failed to update.'));
         }
-
-        // Simpan perubahan
-        $user->save();
-
-        // Redirect ke halaman yang diinginkan dengan pesan sukses
-        return redirect()->route('users.index')->with('success', __('User updated successfully.'));
     }
 
     /**
@@ -163,14 +175,21 @@ class UsersController extends Controller
      */
     public function destroy(string $id)
     {
-        // Mencari pengguna berdasarkan ID
-        $user = User::findOrFail($id);
+        DB::beginTransaction();
+        try {
+            // Mencari pengguna berdasarkan ID
+            $user = User::findOrFail($id);
 
-        // Menghapus pengguna
-        $user->delete();
+            // Menghapus pengguna
+            $user->delete();
 
-        // Redirect ke halaman daftar pengguna dengan pesan sukses
-        return redirect()->route('users.index')->with('success', __('User deleted successfully.'));
+            DB::commit();
 
+            // Redirect ke halaman daftar pengguna dengan pesan sukses
+            return redirect()->route('users.index')->with('success', __('User deleted successfully.'));
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->route('users.index')->with('error', __('User failed to delete.'));
+        }
     }
 }

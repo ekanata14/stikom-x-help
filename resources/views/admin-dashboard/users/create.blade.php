@@ -9,7 +9,7 @@
         <div class="w-full mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form method="POST" action="{{ route('users.store') }}">
+                    <form method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="flex flex-col md:flex-row w-full gap-8">
                             <div class="grid gap-6 w-full md:w-1/2">
@@ -87,9 +87,9 @@
 
                                 {{-- User Type --}}
                                 <div class="space-y-2">
-                                    <x-form.label for="user_type" :value="__('Position')" />
+                                    <x-form.label for="user_type" :value="__('Participant Type')" />
                                     <x-form.select :id="__('id_user_type')" :name="__('id_user_type')">
-                                        <option value="">{{ __('Position') }}</option>
+                                        <option value="">{{ __('Participant Type') }}</option>
                                         @foreach ($userTypes as $userType)
                                             <option value="{{ $userType->id }}">{{ $userType->type_name }}</option>
                                         @endforeach
@@ -115,61 +115,77 @@
                                     <x-form.error :messages="$errors->get('institution')" />
                                 </div>
 
-                                <!-- Front Degree -->
+                                <!-- Occupation -->
                                 <div class="space-y-2">
-                                    <x-form.label for="front_degree" :value="__('Front Degree')" />
+                                    <x-form.label for="front_degree" :value="__('Occupation')" />
+
                                     <x-form.input-with-icon-wrapper>
                                         <x-slot name="icon">
                                             <x-heroicon-o-academic-cap aria-hidden="true" class="w-5 h-5" />
                                         </x-slot>
-                                        <x-form.input withicon id="front_degree" class="block w-full" type="text"
-                                            name="front_degree" :value="old('front_degree')"
-                                            placeholder="{{ __('Front Degree') }}" />
+
+                                        <x-form.input withicon id="occupation" class="block w-full" type="text"
+                                            name="occupation" :value="old('occupation')"
+                                            placeholder="{{ __('Occupation') }}" />
                                     </x-form.input-with-icon-wrapper>
-                                    <x-form.error :messages="$errors->get('front_degree')" />
                                 </div>
 
-                                <!-- Back Degree -->
+                                <!-- Identity ID -->
                                 <div class="space-y-2">
-                                    <x-form.label for="back_degree" :value="__('Back Degree')" />
+                                    <x-form.label for="identity_id" :value="__('Identity ID')" />
+
                                     <x-form.input-with-icon-wrapper>
                                         <x-slot name="icon">
                                             <x-heroicon-o-academic-cap aria-hidden="true" class="w-5 h-5" />
                                         </x-slot>
-                                        <x-form.input withicon id="back_degree" class="block w-full" type="text"
-                                            name="back_degree" :value="old('back_degree')"
-                                            placeholder="{{ __('Back Degree') }}" />
+
+                                        <x-form.input withicon id="identity_id" class="block w-full" type="number"
+                                            name="identity_id" :value="old('identity_id')"
+                                            placeholder="{{ __('Identity ID') }}" />
                                     </x-form.input-with-icon-wrapper>
-                                    <x-form.error :messages="$errors->get('back_degree')" />
                                 </div>
 
                                 <!-- Password -->
                                 <div class="space-y-2">
                                     <x-form.label for="password" :value="__('Password')" />
+
                                     <x-form.input-with-icon-wrapper>
                                         <x-slot name="icon">
                                             <x-heroicon-o-lock-closed aria-hidden="true" class="w-5 h-5" />
                                         </x-slot>
+
                                         <x-form.input withicon id="password" class="block w-full" type="password"
                                             name="password" required autocomplete="new-password"
                                             placeholder="{{ __('Password') }}" />
                                     </x-form.input-with-icon-wrapper>
-                                    <x-form.error :messages="$errors->get('password')" />
                                 </div>
 
                                 <!-- Confirm Password -->
                                 <div class="space-y-2">
                                     <x-form.label for="password_confirmation" :value="__('Confirm Password')" />
+
                                     <x-form.input-with-icon-wrapper>
                                         <x-slot name="icon">
                                             <x-heroicon-o-lock-closed aria-hidden="true" class="w-5 h-5" />
                                         </x-slot>
+
                                         <x-form.input withicon id="password_confirmation" class="block w-full"
                                             type="password" name="password_confirmation" required
                                             placeholder="{{ __('Confirm Password') }}" />
                                     </x-form.input-with-icon-wrapper>
-                                    <x-form.error :messages="$errors->get('password_confirmation')" />
                                 </div>
+
+                                {{-- Identity Card --}}
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-900 dark:text-white"
+                                        for="small_size">Identity
+                                        Card</label>
+                                    <x-form.error :messages="$errors->get('identity_card')" />
+                                    <input
+                                        class="block w-full text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                        id="identity_card" type="file" name="identity_card">
+                                </div>
+
                             </div>
                         </div>
 

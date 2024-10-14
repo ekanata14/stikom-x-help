@@ -68,9 +68,9 @@ Route::middleware(['auth', 'verified', 'AuthAdmin'])->group(function () {
     Route::delete('carts/{cart}', [CartController::class, 'destroy'])->name('carts.destroy'); // Menghapus cart
 
     // CartItem Routes
-    Route::post('cart-items', [CartItemController::class, 'store'])->name('cart-items.store'); // Menambah item ke cart
-    Route::post('cart-items/{cartItem}', [CartItemController::class, 'update'])->name('cart-items.update'); // Memperbarui item di cart
-    Route::delete('cart-items/{cartItem}', [CartItemController::class, 'destroy'])->name('cart-items.destroy'); // Menghapus item dari cart
+    // Route::post('cart-items', [CartItemController::class, 'store'])->name('cart-items.store'); // Menambah item ke cart
+    // Route::post('cart-items/{cartItem}', [CartItemController::class, 'update'])->name('cart-items.update'); // Memperbarui item di cart
+    // Route::delete('cart-items/{cartItem}', [CartItemController::class, 'destroy'])->name('cart-items.destroy'); // Menghapus item dari cart
 
     // Product Routes
     Route::get('/products', [ProductController::class, 'index'])->name('products.index');

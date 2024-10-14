@@ -54,8 +54,9 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
             'mobile_phone' => '1234567890',
             'institution' => 'Admin',
-            'front_degree' => 'Admin',
-            'back_degree' => 'Admin',
+            'occupation' => 'Admin',
+            'identity_id' => '1234567890',
+            'identity_card' => '1234567890',
         ]);
     }
 }

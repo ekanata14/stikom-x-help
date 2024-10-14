@@ -17,13 +17,14 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('complete_name');
+            $table->string('institution');
             $table->string('email')->unique(); // Unique constraint
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('mobile_phone');
-            $table->string('institution')->nullable(); // Bisa kosong
-            $table->string('front_degree')->nullable(); // Bisa kosong
-            $table->string('back_degree')->nullable(); // Bisa kosong
+            $table->string('occupation')->nullable();
+            $table->string('identity_id');
+            $table->string('identity_card');
             $table->rememberToken();
             $table->timestamps();
         });

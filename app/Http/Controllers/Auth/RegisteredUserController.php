@@ -8,8 +8,10 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
+use Illuminate\Validation\Rules\Password as RulesPassword;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 // Models
 use App\Models\User;
@@ -34,40 +36,55 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
+        // Validasi input
+        $validatedData = $request->validate([
             'first_name' => ['required', 'string', 'max:100'],
             'last_name' => ['required', 'string', 'max:100'],
             'complete_name' => ['required', 'string', 'max:255'], // Validasi nama lengkap
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'mobile_phone' => ['required', 'string', 'max:20'], // Validasi nomor telepon
             'institution' => ['nullable', 'string', 'max:100'], // Institusi opsional
-            'front_degree' => ['nullable', 'string', 'max:50'], // Gelar depan opsional
-            'back_degree' => ['nullable', 'string', 'max:50'], // Gelar belakang opsional
+            'occupation' => ['nullable', 'string', 'max:50'], // Gelar depan opsional
+            'identity_id' => ['required', 'string', 'max:50'], // Validasi nomor identitas
             'id_user_type' => ['required', 'exists:user_types,id'], // Pastikan id_user_type ada di tabel user_types
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'confirmed', RulesPassword::defaults()],
+            'identity_card' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validasi gambar payment_receipt
         ]);
 
-        $user = User::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'complete_name' => $request->complete_name,
-            'email' => $request->email,
-            'mobile_phone' => $request->mobile_phone,
-            'institution' => $request->institution,
-            'front_degree' => $request->front_degree,
-            'back_degree' => $request->back_degree,
-            'id_user_type' => $request->id_user_type, // Mengambil id tipe user dari request
-            'password' => Hash::make($request->password), // Mengenkripsi password
-        ]);
+        DB::beginTransaction(); // Mulai DB transaction
 
-        event(new Registered($user));
+        try {
+            // Hash password
+            $validatedData['password'] = Hash::make($validatedData['password']);
 
-        Auth::login($user);
+            // Simpan identity card (jika ada file)
+            if ($request->hasFile('identity_card')) {
+                $validatedData['identity_card'] = $request->file('identity_card')->store('identity_cards', 'private');
+            }
 
-        if (Purchase::where('user_id', $user->id)->count() == 0) {
-            return redirect(route('user.purchase', absolute: false))->with('success', 'Registration successful. Please make a purchase.');
-        } else {
-            return redirect(route('user.dashboard', absolute: false));
+            // Buat user baru
+            $user = User::create($validatedData);
+
+            // Event user terdaftar
+            event(new Registered($user));
+
+            // Login user
+            Auth::login($user);
+
+            // Cek apakah user sudah melakukan pembelian atau belum
+            if (Purchase::where('user_id', $user->id)->count() == 0) {
+                DB::commit(); // Jika sukses, commit transaction
+                return redirect(route('user.purchase', absolute: false))
+                    ->with('success', 'Registration successful. Please make a purchase.');
+            } else {
+                DB::commit(); // Jika sukses, commit transaction
+                return redirect(route('user.dashboard', absolute: false));
+            }
+        } catch (\Exception $e) {
+            DB::rollBack(); // Rollback jika terjadi kesalahan
+            dd($e);
+            $logError = Log::error('Registration failed: ' . $e->getMessage()); // Log error
+            return redirect()->back()->withErrors('Registration failed. Please try again later.');
         }
     }
 }

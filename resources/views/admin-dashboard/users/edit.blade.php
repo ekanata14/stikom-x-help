@@ -9,9 +9,8 @@
         <div class="w-full mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form method="POST" action="{{ route('users.update', $user->id) }}">
+                    <form method="POST" action="{{ route('users.update', $user->id) }}" enctype="multipart/form-data">
                         @csrf
-                        @method('PUT')
                         <div class="flex flex-col md:flex-row w-full gap-8">
                             <div class="grid gap-6 w-full md:w-1/2">
 
@@ -46,15 +45,16 @@
                                 <!-- Complete Name -->
                                 <div class="space-y-2">
                                     <x-form.label for="complete_name" :value="__('Complete Name')" />
+
                                     <x-form.input-with-icon-wrapper>
                                         <x-slot name="icon">
                                             <x-heroicon-o-user aria-hidden="true" class="w-5 h-5" />
                                         </x-slot>
+
                                         <x-form.input withicon id="complete_name" class="block w-full" type="text"
                                             name="complete_name" :value="old('complete_name', $user->complete_name)" required
                                             placeholder="{{ __('Complete Name') }}" />
                                     </x-form.input-with-icon-wrapper>
-                                    <x-form.error :messages="$errors->get('complete_name')" />
                                 </div>
 
                                 <!-- Email Address -->
@@ -87,12 +87,12 @@
 
                                 {{-- User Type --}}
                                 <div class="space-y-2">
-                                    <x-form.label for="user_type" :value="__('Position')" />
-                                    <x-form.select :id="__('id_user_type')" :name="__('id_user_type')" required>
-                                        <option value="">{{ __('Position') }}</option>
+                                    <x-form.label for="user_type" :value="__('Participant Type')" />
+                                    <x-form.select :id="__('id_user_type')" :name="__('id_user_type')">
+                                        <option value="">{{ __('Participant Type') }}</option>
                                         @foreach ($userTypes as $userType)
                                             <option value="{{ $userType->id }}"
-                                                {{ $user->id_user_type == $userType->id ? 'selected' : '' }}>
+                                                {{ $userType->id == $user->id_user_type ? 'selected' : '' }}>
                                                 {{ $userType->type_name }}
                                             </option>
                                         @endforeach
@@ -118,71 +118,82 @@
                                     <x-form.error :messages="$errors->get('institution')" />
                                 </div>
 
-                                <!-- Front Degree -->
+                                <!-- Occupation -->
                                 <div class="space-y-2">
-                                    <x-form.label for="front_degree" :value="__('Front Degree')" />
+                                    <x-form.label for="occupation" :value="__('Occupation')" />
+
                                     <x-form.input-with-icon-wrapper>
                                         <x-slot name="icon">
                                             <x-heroicon-o-academic-cap aria-hidden="true" class="w-5 h-5" />
                                         </x-slot>
-                                        <x-form.input withicon id="front_degree" class="block w-full" type="text"
-                                            name="front_degree" :value="old('front_degree', $user->front_degree)"
-                                            placeholder="{{ __('Front Degree') }}" />
+
+                                        <x-form.input withicon id="occupation" class="block w-full" type="text"
+                                            name="occupation" :value="old('occupation', $user->occupation)"
+                                            placeholder="{{ __('Occupation') }}" />
                                     </x-form.input-with-icon-wrapper>
-                                    <x-form.error :messages="$errors->get('front_degree')" />
                                 </div>
 
-                                <!-- Back Degree -->
+                                <!-- Identity ID -->
                                 <div class="space-y-2">
-                                    <x-form.label for="back_degree" :value="__('Back Degree')" />
+                                    <x-form.label for="identity_id" :value="__('Identity ID')" />
+
                                     <x-form.input-with-icon-wrapper>
                                         <x-slot name="icon">
                                             <x-heroicon-o-academic-cap aria-hidden="true" class="w-5 h-5" />
                                         </x-slot>
-                                        <x-form.input withicon id="back_degree" class="block w-full" type="text"
-                                            name="back_degree" :value="old('back_degree', $user->back_degree)"
-                                            placeholder="{{ __('Back Degree') }}" />
+
+                                        <x-form.input withicon id="identity_id" class="block w-full" type="number"
+                                            name="identity_id" :value="old('identity_id', $user->identity_id)"
+                                            placeholder="{{ __('Identity ID') }}" />
                                     </x-form.input-with-icon-wrapper>
-                                    <x-form.error :messages="$errors->get('back_degree')" />
                                 </div>
 
-                                <!-- Password -->
+                                <!-- Password (Optional) -->
                                 <div class="space-y-2">
-                                    <x-form.label for="password" :value="__('Password')" />
+                                    <x-form.label for="password" :value="__('Password (Optional)')" />
+
                                     <x-form.input-with-icon-wrapper>
                                         <x-slot name="icon">
                                             <x-heroicon-o-lock-closed aria-hidden="true" class="w-5 h-5" />
                                         </x-slot>
+
                                         <x-form.input withicon id="password" class="block w-full" type="password"
                                             name="password" autocomplete="new-password"
-                                            placeholder="{{ __('Leave blank to keep current password') }}" />
+                                            placeholder="{{ __('Password (Optional)') }}" />
                                     </x-form.input-with-icon-wrapper>
-                                    <x-form.error :messages="$errors->get('password')" />
                                 </div>
 
                                 <!-- Confirm Password -->
                                 <div class="space-y-2">
                                     <x-form.label for="password_confirmation" :value="__('Confirm Password')" />
+
                                     <x-form.input-with-icon-wrapper>
                                         <x-slot name="icon">
                                             <x-heroicon-o-lock-closed aria-hidden="true" class="w-5 h-5" />
                                         </x-slot>
+
                                         <x-form.input withicon id="password_confirmation" class="block w-full"
                                             type="password" name="password_confirmation"
                                             placeholder="{{ __('Confirm Password') }}" />
                                     </x-form.input-with-icon-wrapper>
-                                    <x-form.error :messages="$errors->get('password_confirmation')" />
                                 </div>
+
+                                {{-- Identity Card --}}
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-900 dark:text-white"
+                                        for="small_size">Identity Card</label>
+                                    <x-form.error :messages="$errors->get('identity_card')" />
+                                    <input
+                                        class="block w-full text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                        id="identity_card" type="file" name="identity_card">
+                                </div>
+
                             </div>
                         </div>
 
-                        <!-- Update Button -->
-                        <div class="w-full flex flex-col items-start">
-                            <x-button class="justify-center w-full md:w-1/4 gap-2 mt-6">
-                                <x-heroicon-o-user-add class="w-6 h-6" aria-hidden="true" />
-                                <span>{{ __('Update User') }}</span>
-                            </x-button>
-                        </div>
+                        <x-button class="mt-8">
+                            {{ __('Update') }}
+                        </x-button>
                     </form>
                 </div>
             </div>

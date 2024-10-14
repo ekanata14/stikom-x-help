@@ -20,10 +20,11 @@ class ProfileUpdateRequest extends FormRequest
             'last_name' => ['required', 'string', 'max:255'],
             'complete_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
-            'mobile_phone' => ['required', 'string', 'max:15'], // Sesuaikan max sesuai kebutuhan
+            'mobile_phone' => ['required', 'string', 'max:30'], // Sesuaikan max sesuai kebutuhan
             'institution' => ['nullable', 'string', 'max:255'],
-            'front_degree' => ['nullable', 'string', 'max:255'],
-            'back_degree' => ['nullable', 'string', 'max:255'],
+            'occupation' => ['nullable', 'string', 'max:255'],
+            'identity_card' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validasi gambar payment_receipt
+            'identity_id' => ['nullable', 'string', 'max:255'],
         ];
     }
 }

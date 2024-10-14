@@ -94,7 +94,7 @@ Route::middleware(['auth', 'verified', 'AuthAdmin'])->group(function () {
 
     // Payment Receipt Routes
     Route::get('/purchase/receipt/{id}', [PurchaseController::class, 'showReceipt'])->name('purchase.receipt.admin');
-
+    Route::get('/user/student/card/{id}', [UsersController::class, 'showStudentCard'])->name('user.student.card');
 });
 
 Route::middleware('auth')->group(function () {
@@ -105,6 +105,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/user/purchase', [PurchaseController::class, 'store'])->name('user.purchase.store');
     Route::post('/user/purchase/upload/receipt', [PurchaseController::class, 'uploadReceipt'])->name('user.purchase.upload.receipt.store');
     Route::get('/user/purchase/receipt/{id}', [PurchaseController::class, 'showReceipt'])->name('purchase.receipt.user');
+    Route::get('/user/student/card/{id}', [UsersController::class, 'showStudentCard'])->name('user.student.card');
 });
 
 

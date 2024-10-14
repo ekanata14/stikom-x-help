@@ -43,12 +43,12 @@ class RegisteredUserController extends Controller
             'complete_name' => ['required', 'string', 'max:255'], // Validasi nama lengkap
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'mobile_phone' => ['required', 'string', 'max:20'], // Validasi nomor telepon
-            'institution' => ['nullable', 'string', 'max:100'], // Institusi opsional
-            'occupation' => ['nullable', 'string', 'max:50'], // Gelar depan opsional
-            'identity_id' => ['required', 'string', 'max:50'], // Validasi nomor identitas
+            'institution' => ['required', 'string', 'max:100'], // Institusi opsional
+            'occupation' => ['required', 'string', 'max:50'], // Gelar depan opsional
+            'identity_id' => ['nullable', 'string', 'max:50'], // Validasi nomor identitas
             'id_user_type' => ['required', 'exists:user_types,id'], // Pastikan id_user_type ada di tabel user_types
             'password' => ['required', 'confirmed', RulesPassword::defaults()],
-            'identity_card' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validasi gambar payment_receipt
+            'identity_card' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validasi gambar payment_receipt
         ]);
 
         DB::beginTransaction(); // Mulai DB transaction

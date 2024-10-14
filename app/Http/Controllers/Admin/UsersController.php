@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Password as RulesPassword;
+use Illuminate\Support\Facades\Storage;
 
 // Models
 use App\Models\User;
@@ -191,5 +192,32 @@ class UsersController extends Controller
             DB::rollBack();
             return redirect()->route('users.index')->with('error', __('User failed to delete.'));
         }
+    }
+
+    public function showStudentCard(string $id)
+    {
+        $user = User::find($id);
+        // Cek apakah file ada di storage
+        if (Storage::disk('private')->exists($user->identity_card)) {
+            // Jika file ditemukan, tampilkan sebagai response download
+            return Storage::disk('private')->download($user->identity_card);
+        }
+
+        // Jika file tidak ditemukan, kembalikan response error
+        return back()->with('error', 'Student Card not found.');
+    }
+
+    public function download(string $id)
+    {
+        $user = User::find($id);
+        if (Storage::disk('private')->exists('identity_cards/' . $user->identity_card)) {
+            // Mendapatkan path file
+            $path = Storage::disk('private')->path('identity_cards/' . $user->identity_card);
+
+            // Mengembalikan response untuk menampilkan gambar
+            return response()->file($path);
+        }
+
+        return back()->with('error', 'Receipt not found.');
     }
 }

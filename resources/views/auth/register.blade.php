@@ -22,7 +22,7 @@
                             </x-slot>
 
                             <x-form.input withicon id="first_name" class="block w-full" type="text" name="first_name"
-                                :value="old('first_name')" required autofocus placeholder="{{ __('First Name') }}" />
+                                :value="old('first_name')" required autofocus placeholder="{{ __('First Name') }}" required/>
                         </x-form.input-with-icon-wrapper>
                     </div>
 
@@ -39,7 +39,7 @@
                             </x-slot>
 
                             <x-form.input withicon id="last_name" class="block w-full" type="text" name="last_name"
-                                :value="old('last_name')" required placeholder="{{ __('Last Name') }}" />
+                                :value="old('last_name')" required placeholder="{{ __('Last Name') }}" required/>
                         </x-form.input-with-icon-wrapper>
                     </div>
 
@@ -74,7 +74,7 @@
                             </x-slot>
 
                             <x-form.input withicon id="email" class="block w-full" type="email" name="email"
-                                :value="old('email')" required placeholder="{{ __('Email') }}" />
+                                :value="old('email')" required placeholder="{{ __('Email') }}" required/>
                         </x-form.input-with-icon-wrapper>
                     </div>
 
@@ -103,7 +103,7 @@
                             <span class="text-red-500">*</span>
                         </div>
 
-                        <x-form.select :id="__('user_type')" :name="__('id_user_type')">
+                        <x-form.select :id="__('user_type')" :name="__('id_user_type')" required>
                             <option value="">{{ __('Participant Type') }}</option>
                             @foreach ($userTypes as $userType)
                                 <option value="{{ $userType->id }}">{{ $userType->type_name }}</option>
@@ -128,7 +128,7 @@
                             </x-slot>
 
                             <x-form.input withicon id="institution" class="block w-full" type="text"
-                                name="institution" :value="old('institution')" placeholder="{{ __('Institution') }}" />
+                                name="institution" :value="old('institution')" placeholder="{{ __('Institution') }}" required/>
                         </x-form.input-with-icon-wrapper>
                     </div>
 
@@ -145,25 +145,21 @@
                             </x-slot>
 
                             <x-form.input withicon id="occupation" class="block w-full" type="text" name="occupation"
-                                :value="old('occupation')" placeholder="{{ __('Occupation') }}" />
+                                :value="old('occupation')" placeholder="{{ __('Occupation') }}" required/>
                         </x-form.input-with-icon-wrapper>
                     </div>
 
-                    <!-- Identity ID -->
+                    {{-- Student Card --}}
                     <div class="space-y-2">
                         <div class="flex gap-1">
-                            <x-form.label for="identity_id" :value="__('Identity ID')" />
-                            <span class="text-red-500">*</span>
+                            <label class="block text-sm font-medium text-gray-900 dark:text-white"
+                                for="small_size">Student
+                                Card</label>
                         </div>
-
-                        <x-form.input-with-icon-wrapper>
-                            <x-slot name="icon">
-                                <x-heroicon-o-academic-cap aria-hidden="true" class="w-5 h-5" />
-                            </x-slot>
-
-                            <x-form.input withicon id="identity_id" class="block w-full" type="number"
-                                name="identity_id" :value="old('identity_id')" placeholder="{{ __('Identity ID') }}" />
-                        </x-form.input-with-icon-wrapper>
+                        <x-form.error :messages="$errors->get('identity_card')" />
+                        <input
+                            class="block w-full text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                            id="identity_card" type="file" name="identity_card">
                     </div>
 
                     <!-- Password -->
@@ -180,7 +176,7 @@
 
                             <x-form.input withicon id="password" class="block w-full" type="password"
                                 name="password" required autocomplete="new-password"
-                                placeholder="{{ __('Password') }}" />
+                                placeholder="{{ __('Password') }}" required/>
                         </x-form.input-with-icon-wrapper>
                     </div>
 
@@ -201,19 +197,8 @@
                         </x-form.input-with-icon-wrapper>
                     </div>
 
-                    {{-- Identity Card --}}
-                    <div class="space-y-2">
-                        <div class="flex gap-1">
-                            <label class="block text-sm font-medium text-gray-900 dark:text-white"
-                                for="small_size">Identity
-                                Card</label>
-                            <span class="text-red-500">*</span>
-                        </div>
-                        <x-form.error :messages="$errors->get('identity_card')" />
-                        <input
-                            class="block w-full text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                            id="identity_card" type="file" name="identity_card">
-                    </div>
+                    <div class="space-y-2"></div>
+                    <div class="space-y-2"></div>
                 </div>
             </div>
             <!-- Register Button -->

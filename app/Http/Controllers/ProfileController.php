@@ -32,12 +32,24 @@ class ProfileController extends Controller
     {
         $request->user()->fill($request->validated());
 
+        // Cek apakah email diubah, dan reset verifikasi email
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
 
+        // Save identity card (if file exists)
+        if ($request->hasFile('identity_card')) {
+            // Simpan file identity_card ke storage dan dapatkan path-nya
+            $identityCardPath = $request->file('identity_card')->store('identity_cards', 'private');
+
+            // Simpan path identity_card ke user
+            $request->user()->identity_card = $identityCardPath;
+        }
+
+        // Simpan user dengan data yang diperbarui
         $request->user()->save();
 
+        // Redirect ke halaman profile dengan pesan sukses
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 

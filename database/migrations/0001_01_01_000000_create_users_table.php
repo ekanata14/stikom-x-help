@@ -23,8 +23,8 @@ return new class extends Migration
             $table->string('password');
             $table->string('mobile_phone');
             $table->string('occupation')->nullable();
-            $table->string('identity_id');
-            $table->string('identity_card');
+            $table->string('identity_id')->nullable();
+            $table->string('identity_card')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

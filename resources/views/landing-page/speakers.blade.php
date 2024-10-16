@@ -135,7 +135,7 @@
               alt=""
             />
             <h5>Dr. Ida Bagus Rai Dharmawijaya Mantra</h5>
-            <h6>(Singapore)</h6>
+            <h6>Politician</h6>
             <p>Ida Bagus Rai Dharmawijaya Mantra, S.E., M.Sc., or commonly called Rai Mantra (born April 30, 1967) is an Indonesian politician. He served as Mayor of Denpasar from 2008 to 2010, replacing Anak Agung Gede Ngurah Puspayoga who became Deputy Governor of Bali. He was then elected in the Denpasar regional election and served for the 2010-2015 period and the 2016-2021 period. In 2018, Rai Mantra ran as a candidate for governor of Bali in the 2018 regional election.</p>
           </div>
           <div class="text-center mt-5">
@@ -148,7 +148,7 @@
               alt=""
             />
             <h5>I Made Marlowe Makaradhwaja Bandem</h5>
-            <h6>Lorem Ipsum</h6>
+            <h6>Artist</h6>
             <p>
               I Made Marlowe Makaradhwaja Bandem is an individual with eclectic talents, interests and professions. Marlowe co-founded 370s in July 1928 to realize an economic vision. Together with his beloved wife 370s-Marl. Marlowe is also known as a banker. He manages various financial challenges in spirit. Marlowe also pursues the dynamic world of art and technology, currently he is part of Quantum Temple, which utilizes Web 3.0 and blockchain for the preservation of indigenous cultural heritage.
             </p>

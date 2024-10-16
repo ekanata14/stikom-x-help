@@ -165,7 +165,7 @@
                     <!-- Password -->
                     <div class="space-y-2">
                         <div class="flex gap-1">
-                            <x-form.label for="password" :value="__('Password')" />
+                            <x-form.label for="password" :value="__('Password (Min: 8 Characters)')" />
                             <span class="text-red-500">*</span>
                         </div>
 
@@ -176,7 +176,7 @@
 
                             <x-form.input withicon id="password" class="block w-full" type="password"
                                 name="password" required autocomplete="new-password"
-                                placeholder="{{ __('Password') }}" required/>
+                                placeholder="{{ __('********') }}" required/>
                         </x-form.input-with-icon-wrapper>
                     </div>
 
@@ -193,7 +193,7 @@
                             </x-slot>
 
                             <x-form.input withicon id="password_confirmation" class="block w-full" type="password"
-                                name="password_confirmation" required placeholder="{{ __('Confirm Password') }}" />
+                                name="password_confirmation" required placeholder="{{ __('********') }}" />
                         </x-form.input-with-icon-wrapper>
                     </div>
 

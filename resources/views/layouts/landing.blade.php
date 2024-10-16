@@ -105,9 +105,9 @@
                     </div>
                     <br />
                     <div class="row content d-flex align-items-center justify-content-center">
-                        <div class="col-4">
+                        {{-- <div class="col-4">
                             <img src="assets/images/esg.png" alt="" width="70%" height="70%" />
-                        </div>
+                        </div> --}}
                         <div class="col-4">
                             <img src="assets/images/stikom.png" alt="" width="70%" height="70%" />
                         </div>

@@ -122,7 +122,7 @@
                         <div class="col-4">
                             <div class="card">
                                 <div class="card-body text-center cream csize">
-                                    <p class="card-text m-2">INDUSTRY</p>
+                                    <p class="card-text m-2">INDUSTRY/GOVERNMENT</p>
                                 </div>
                             </div>
                         </div>
@@ -189,7 +189,7 @@
                                 <div class="card-body text-center blue text-white csize">
                                     <p class="card-text">
                                         IDR <br />
-                                        500.000
+                                        450.000
                                     </p>
                                 </div>
                             </div>

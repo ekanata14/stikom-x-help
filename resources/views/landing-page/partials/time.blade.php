@@ -21,7 +21,7 @@
               color: white;
             ">
                 Register
-        </a>
+            </a>
         </div>
         <h3 class="text-center mt-5 text-white">
             GOES TO ESG : ECOLOGY OF BALI 2024
@@ -110,7 +110,7 @@
                 var now = new Date();
                 var countdownEnd = new Date(
                     now.getTime() +
-                    65 * 24 * 60 * 60 * 1000 +
+                    38 * 24 * 60 * 60 * 1000 +
                     6 * 60 * 60 * 1000 +
                     22 * 60 * 1000
                 );

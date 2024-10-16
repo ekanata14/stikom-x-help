@@ -227,7 +227,7 @@
                 processed through our secure payment gateway. A personalized payment
                 link will be sent directly to your email. Please follow the link to
                 complete your transaction quickly and securely. For questions or
-                assistance, please contact our support team <b>Julius Rael</b>, via WA at<a href="html_images.asp"
+                assistance, please contact our support team <b>Julius Ngantung</b>, via WA at<a href="html_images.asp"
                     target="_blank "
                     style="
               color: hsl(209, 100%, 63%);

@@ -1,6 +1,6 @@
 @extends('layouts.landing')
 @section('content')
-    <section class="module parallax2 parallax-1 d-flex mb-4">
+    <section class="module parallax2 parallax-3 d-flex mb-4">
         <div class="container d-flex text-center align-items-center justify-content-center text-white">
             <h2>COMITTEE</h2>
         </div>
@@ -16,67 +16,75 @@
                     <tr>
                         <th>Steering Committee</th>
                         <td>
-                            Dr. Takashi Sato, Ph.D<br />
-                            dr. Pringgodigdo Nugroho, SpPD-KGH, FINASIM<br />
-                            Prof. Dr. dr. I Gde Raka Widiana, SpPD-KGH, FINASIM<br />
-                            Prof. dr. Aida Lydia, Ph.D, Sp.PD-KGH, FINASIM<br />
-                            Prof. Dr. dr. Ketut Suwitra, SpPD-KGH, FINASIM<br />
-                            Dr. dr. Yenny Kandarin, SpPD-KGH, FINASIM
+                            Dr. Dadang Hermawan, S.E., M.M., Ak.<br />
+                            Professor Datuk Dr Paul Chan<br />
+                            Dr. Roy Rudolf Huizen, ST., MT<br />
+                            Dr. Ni Luh Putri Srinadi SE., MM. Kom.<br />
+                            Yudi Agusta Ph.D.
                         </td>
                     </tr>
                     <tr>
                         <th>Chairman</th>
-                        <td>Dr. dr. Atma Gunawan, SpPD-KGH, FINASIM</td>
+                        <td> Dr. Evi Triandini, SP., M.Eng</td>
                     </tr>
                     <tr>
-                        <th>Head Local Committee</th>
-                        <td>Prof. Dr. dr. I Gde Raka Widiana, SpPD-KGH, FINASIM</td>
+                        <th>Committee Member</th>
+                        <td>
+                            Kadek Widi Widanti<br />
+                            Ayu Chrisniyanti, S.Kom., MBA<br />
+                            Kadek Surya Adi Saputra,S.Kom.,M.Kom<br />
+                            I Komang Dharmendra, S.Kom.,M.T.<br />
+                            Dr. I Gusti Ayu Widari Upadani, M.Agb<br />
+                            Ni Nyoman Supuwiningsih, S.T., M.Kom<br />
+                            I Made Pasek Pradnyana Wijaya, S.Kom,. M.Kom<br />
+                            Matius Ivan Bimasena, S.Kom<br />
+                            Ni Wayan Ari Ulandari, S.Kom., M.Kom<br />
+                            Kadek Adies Wiranegara ,S.Kom<br />
+                            Julius Isracl Ngantung, S.E, MBA<br />
+                            I Nyoman Bagus Pramartha, S.Pd., M.Pd<br />
+                            Ni Luh Mas Elma Yuniawati,S.Kom<br />
+                            I Putu Gede Abdi Sudiatmika, S.Pd., M.Kom<br />
+                            Putu Tjintia Kencana Dewi, S.E., M.M<br />
+                            Rifky Lana Rahardian, S.Kom., M.Tn<br />
+                            Tria Hikmah Fratiwi, S.Kom., M.T.<br />
+                            Ni Luh Putu Silvia Dewi, S.Kom
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </section>
 
-    <section class="module d-flex paralax parallax-1 mt-4">
+    <section class="module d-flex paralax parallax-3 mt-4">
         <div class="container d-flex flex-column justify-content-center align-items-center">
-            <div><img src="assets/images/esg.png" alt="" height="" width="" /></div>
+            <div><img src="assets/esg.png" alt="" height="" width="" /></div>
             <div class="d-grid gap-2 col-3 justify-content-center">
-                <a href="{{ route('login') }}" type="button" class="btn mt-4 fw-semibold fs-5"
+                <button type="button" class="btn mt-4 fw-semibold fs-5"
                     style="
               --bs-btn-padding-y: 1rem;
-              --bs-btn-padding-x: 6rem;
+              --bs-btn-padding-x: 7rem;
               --bs-btn-font-size: 1rem;
               background-color: #4c7838;
               color: white;
             ">
                     Login
-                </a>
-                <a href="{{ route('register') }}" type="button" class="btn mt-3 fw-semibold fs-5"
+                </button>
+                <button type="button" class="btn mt-3 fw-semibold fs-5"
                     style="
               --bs-btn-padding-y: 1rem;
-              --bs-btn-padding-x: 6rem;
+              --bs-btn-padding-x: 7rem;
               --bs-btn-font-size: 1rem;
               background-color: #4c7838;
               color: white;
             ">
                     Register
-                </a>
-                <button type="button" class="btn mt-3 fw-semibold"
-                    style="
-              --bs-btn-padding-y: 1rem;
-              --bs-btn-padding-x: 6rem;
-              --bs-btn-font-size: 1rem;
-              background-color: #4c7838;
-              color: white;
-            ">
-                    Go To Conference
                 </button>
             </div>
             <h3 class="text-center mt-5 text-white">
                 GOES TO ESG : ECOLOGY OF BALI 2024
             </h3>
 
-            <div id="js-timer" class="timer d-flex justify-content-center" role="timer">
+            <div id="js-timer" class="timer d-flex justify-content-center container col-xl-6 col-md-9" role="timer">
                 <span class="timer__item" id="timer-days">
                     <span class="timer__value">00</span>
                     <span class="timer__label">Days</span>

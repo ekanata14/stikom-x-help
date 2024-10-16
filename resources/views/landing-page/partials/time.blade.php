@@ -46,77 +46,89 @@
             </span>
         </div>
 
-        <script>
-            (function() {
-                "use strict";
+  <script>
+    (function () {
+      "use strict";
 
-                if (typeof window.Timer !== "object") {
-                    window.Timer = {};
-                }
+      if (typeof window.Timer !== "object") {
+        window.Timer = {};
+      }
 
-                Timer.getTimeRemaining = function(endtimeRaw) {
-                    var t = Date.parse(endtimeRaw) - Date.parse(new Date());
-                    var seconds = Math.floor((t / 1000) % 60);
-                    var minutes = Math.floor((t / 1000 / 60) % 60);
-                    var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
-                    var days = Math.floor(t / (1000 * 60 * 60 * 24));
+      Timer.getTimeRemaining = function (endtimeRaw) {
+        var t = Date.parse(endtimeRaw) - Date.parse(new Date());
+        var seconds = Math.floor((t / 1000) % 60);
+        var minutes = Math.floor((t / 1000 / 60) % 60);
+        var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+        var days = Math.floor(t / (1000 * 60 * 60 * 24));
 
-                    return {
-                        total: t,
-                        days: days,
-                        hours: hours,
-                        minutes: minutes,
-                        seconds: seconds,
-                    };
-                };
+        return {
+          total: t,
+          days: days,
+          hours: hours,
+          minutes: minutes,
+          seconds: seconds,
+        };
+      };
 
-                Timer.updateClock = function(endtime) {
-                    var t = Timer.getTimeRemaining(endtime);
-                    var days = document
-                        .getElementById("timer-days")
-                        .querySelector(".timer__value");
-                    var hours = document
-                        .getElementById("timer-hours")
-                        .querySelector(".timer__value");
-                    var minutes = document
-                        .getElementById("timer-minutes")
-                        .querySelector(".timer__value");
-                    var seconds = document
-                        .getElementById("timer-seconds")
-                        .querySelector(".timer__value");
+      Timer.updateClock = function (endtime) {
+        var t = Timer.getTimeRemaining(endtime);
+        var days = document
+          .getElementById("timer-days")
+          .querySelector(".timer__value");
+        var hours = document
+          .getElementById("timer-hours")
+          .querySelector(".timer__value");
+        var minutes = document
+          .getElementById("timer-minutes")
+          .querySelector(".timer__value");
+        var seconds = document
+          .getElementById("timer-seconds")
+          .querySelector(".timer__value");
 
-                    days.innerHTML = ("0" + t.days).slice(-2);
-                    hours.innerHTML = ("0" + t.hours).slice(-2);
-                    minutes.innerHTML = ("0" + t.minutes).slice(-2);
-                    seconds.innerHTML = ("0" + t.seconds).slice(-2);
+        days.innerHTML = ("0" + t.days).slice(-2);
+        hours.innerHTML = ("0" + t.hours).slice(-2);
+        minutes.innerHTML = ("0" + t.minutes).slice(-2);
+        seconds.innerHTML = ("0" + t.seconds).slice(-2);
 
-                    if (t.total <= 0) {
-                        clearInterval(timeinterval);
-                        days.innerHTML = "00";
-                        hours.innerHTML = "00";
-                        minutes.innerHTML = "00";
-                        seconds.innerHTML = "00";
-                    }
-                };
+        if (t.total <= 0) {
+          clearInterval(Timer.timeinterval);
+          days.innerHTML = "00";
+          hours.innerHTML = "00";
+          minutes.innerHTML = "00";
+          seconds.innerHTML = "00";
+          localStorage.removeItem("countdownEnd"); // Remove stored end time when the countdown finishes
+        }
+      };
 
-                Timer.start = function(endtime) {
-                    Timer.updateClock(endtime);
-                    var timeinterval = setInterval(function() {
-                        Timer.updateClock(endtime);
-                    }, 1000);
-                };
+      Timer.start = function (endtime) {
+        Timer.updateClock(endtime);
+        Timer.timeinterval = setInterval(function () {
+          Timer.updateClock(endtime);
+        }, 1000);
+      };
 
-                // Start the countdown with 65 days, 6 hours, and 22 minutes from now
-                var now = new Date();
-                var countdownEnd = new Date(
-                    now.getTime() +
-                    38 * 24 * 60 * 60 * 1000 +
-                    6 * 60 * 60 * 1000 +
-                    22 * 60 * 1000
-                );
+      Timer.initialize = function () {
+        var storedEndtime = localStorage.getItem("countdownEnd");
+        if (storedEndtime) {
+          // If there is a stored end time, resume the countdown
+          Timer.start(new Date(storedEndtime));
+        } else {
+          // Set a new countdown time if none is stored
+          var now = new Date();
+          var countdownEnd = new Date(
+            now.getTime() +
+              38 * 24 * 60 * 60 * 1000 +
+              6 * 60 * 60 * 1000 +
+              22 * 60 * 1000
+          );
+          localStorage.setItem("countdownEnd", countdownEnd);
+          Timer.start(countdownEnd);
+        }
+      };
 
-                Timer.start(countdownEnd);
-            })();
-        </script>
+      // Initialize the countdown timer
+      Timer.initialize();
+    })();
+  </script>
     </div>
 </section>

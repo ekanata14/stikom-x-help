@@ -82,5 +82,16 @@
             });
         </script>
     @endif
+
+    @if (session('warning'))
+        <script>
+            Swal.fire({
+                title: 'Warning',
+                text: "{{ session('warning') }}",
+                icon: 'warning',
+                confirmButtonText: 'OK'
+            });
+        </script>
+    @endif
 </body>
 </html>

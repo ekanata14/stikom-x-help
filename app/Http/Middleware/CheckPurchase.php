@@ -25,10 +25,10 @@ class CheckPurchase
 
         // Jika user tidak memiliki pembelian, redirect ke halaman pembelian
         if (is_null($purchase)) {
-            return redirect()->route('login')->with('error', 'You need to make a purchase first.');
+            return redirect()->route('user.purchase')->with('warning', 'You need to make a purchase first.');
         } else if (is_null($purchase->payment_receipt)) {
-            return redirect()->route('login', $purchase->id)
-                ->with('error', 'Please upload your payment receipt.');
+            return redirect()->route('user.purchase.upload.receipt', $purchase->id)
+                ->with('warning', 'Please upload your payment receipt.');
         } else {
             // Jika semua syarat terpenuhi, lanjutkan ke request berikutnya
             return $next($request);

@@ -34,6 +34,29 @@
                         <input type="hidden" name="id" value="{{ $purchase->id }}">
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                             for="small_size">Upload Your Payment Receipt</label>
+                        <hr>
+                        @if ($purchase->currency == 'USD')
+                        @else
+                            <p class="my-2">BNI (ITB STIKOM BALI)</p>
+                            <div class="flex justify-center items-center my-2 gap-2">
+                                <p id="number">0069008818</p>
+                                <button type="button" onclick="copyToClipboard()"
+                                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                                    style="font-size: 12px;">
+                                    Copy
+                                </button>
+                            </div>
+                            <script>
+                                function copyToClipboard() {
+                                    var copyText = document.getElementById("number").innerText;
+                                    navigator.clipboard.writeText(copyText).then(function() {
+                                        alert('Copied to clipboard');
+                                    }, function(err) {
+                                        alert('Failed to copy text: ', err);
+                                    });
+                                }
+                            </script>
+                        @endif
                         <x-form.error :messages="$errors->get('payment_receipt')" />
                         <input
                             class="block w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"

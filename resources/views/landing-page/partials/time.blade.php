@@ -2,7 +2,7 @@
     <div class="container d-flex flex-column justify-content-center align-items-center">
         <div><img src="assets/images/esg.png" alt="" height="" width="" /></div>
         <div class="d-grid gap-2 col-3 justify-content-center">
-            <button type="button" class="btn mt-4 fw-semibold fs-5"
+            <a href="{{ route('login') }}" class="btn mt-4 fw-semibold fs-5"
                 style="
               --bs-btn-padding-y: 1rem;
               --bs-btn-padding-x: 7rem;
@@ -11,8 +11,8 @@
               color: white;
             ">
                 Login
-            </button>
-            <button type="button" class="btn mt-3 fw-semibold fs-5"
+            </a>
+            <a href="{{ route('register') }}" class="btn mt-3 fw-semibold fs-5"
                 style="
               --bs-btn-padding-y: 1rem;
               --bs-btn-padding-x: 7rem;
@@ -21,7 +21,7 @@
               color: white;
             ">
                 Register
-            </button>
+        </a>
         </div>
         <h3 class="text-center mt-5 text-white">
             GOES TO ESG : ECOLOGY OF BALI 2024

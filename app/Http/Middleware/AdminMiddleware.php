@@ -23,6 +23,6 @@ class AdminMiddleware
         }
 
         // Jika bukan admin, redirect ke halaman lain, misalnya home
-        return redirect('/user/purchase')->with('error', 'You do not have admin access.');
+        return redirect('/user/purchase');
     }
 }

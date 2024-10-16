@@ -32,39 +32,52 @@
                                 href="{{ route('home') }}">Home</a>
                         </li>
                         <li class="nav-item dropdown px-4">
-                            <a class="nav-link dropdown-toggle {{ request()->is('general-info*') ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <a class="nav-link dropdown-toggle {{ request()->is('general-info*') ? 'active' : '' }}"
+                                href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 General Info
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item {{ request()->routeIs('general-info') ? 'active' : '' }}" href="{{ route('general-info') }}">General Information</a>
+                                    <a class="dropdown-item {{ request()->routeIs('general-info') ? 'active' : '' }}"
+                                        href="{{ route('general-info') }}">General Information</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item {{ request()->routeIs('commitee') ? 'active' : '' }}" href="{{ route('commitee') }}">Comittee</a>
+                                    <a class="dropdown-item {{ request()->routeIs('commitee') ? 'active' : '' }}"
+                                        href="{{ route('commitee') }}">Comittee</a>
                                 </li>
                             </ul>
                         </li>
                         <li class="nav-item px-4">
-                            <a class="nav-link {{ request()->routeIs('speakers') ? 'active' : '' }}" href="{{ route('speakers') }}">Speakers</a>
+                            <a class="nav-link {{ request()->routeIs('speakers') ? 'active' : '' }}"
+                                href="{{ route('speakers') }}">Speakers</a>
                         </li>
                         <li class="nav-item dropdown px-4">
-                            <a class="nav-link dropdown-toggle {{ request()->is('travel*') ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <a class="nav-link dropdown-toggle {{ request()->is('travel*') ? 'active' : '' }}"
+                                href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Travel & Accomodation
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item {{ request()->routeIs('accomodation') ? 'active' : '' }}" href="{{ route('accomodation') }}">All Accomodation</a>
+                                    <a class="dropdown-item {{ request()->routeIs('accomodation') ? 'active' : '' }}"
+                                        href="{{ route('accomodation') }}">All Accomodation</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item {{ request()->routeIs('travel') ? 'active' : '' }}" href="{{ route('travel') }}">Travel Information</a>
+                                    <a class="dropdown-item {{ request()->routeIs('travel') ? 'active' : '' }}"
+                                        href="{{ route('travel') }}">Travel Information</a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item px-4 btn btn-sm" style="background-color: #507c3c">
-                            <a class="nav-link text-white {{ request()->routeIs('login') ? 'active' : '' }}" href="{{ route('login') }}"><b>Register/Login</b></a>
-                        </li>
+                        @if (Auth::check())
+                            <li class="nav-item px-4 btn btn-sm" style="background-color:#F08519">
+                                <a class="nav-link text-white font-bold {{ request()->routeIs('user.dashboard') ? 'active' : '' }}"
+                                    href="{{ route('user.dashboard') }}">Dashboard</a>
+                            </li>
+                        @else
+                            <li class="nav-item px-4 btn btn-sm" style="background-color: #507c3c">
+                                <a class="nav-link text-white {{ request()->routeIs('login') ? 'active' : '' }}"
+                                    href="{{ route('login') }}"><b>Register/Login</b></a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </span>

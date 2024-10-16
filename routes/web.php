@@ -36,7 +36,7 @@ Route::get('/general-info', [LandingPageController::class, 'generalInfo'])->name
 Route::get('/speakers', [LandingPageController::class, 'speakers'])->name('speakers');
 Route::get('/travel', [LandingPageController::class, 'travel'])->name('travel');
 
-Route::middleware(['auth', 'verified', 'AuthAdmin'])->group(function () {
+Route::middleware(['AuthAdmin'])->group(function () {
 
     // Dashboard Routes
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
@@ -98,7 +98,7 @@ Route::middleware(['auth', 'verified', 'AuthAdmin'])->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+    Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard')->middleware('CheckPurchase');
 
     Route::get('/user/purchase', [PurchaseController::class, 'userPurchase'])->name('user.purchase');
     Route::get('/user/purchase/upload/receipt/{id}', [PurchaseController::class, 'userUploadReceipt'])->name('user.purchase.upload.receipt');
@@ -109,7 +109,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

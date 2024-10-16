@@ -4,8 +4,10 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\UserType;
+use App\Models\Product;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -38,10 +40,79 @@ class DatabaseSeeder extends Seeder
             'type_name' => 'International Industry',
             'region' => 'International',
         ]);
-        
+
         UserType::create([
             'type_name' => 'International Lecturer',
             'region' => 'International',
+        ]);
+
+        UserType::create([
+            'type_name' => 'International Student',
+            'region' => 'International',
+        ]);
+
+        // Seeder untuk tabel products
+        Product::insert([
+            [
+                'user_type_id' => 2,
+                'name' => 'Seminar (National Industry)',
+                'description' => 'Seminar (National Industry)',
+                'currency' => 'IDR',
+                'price' => 600000.00,
+                'quota' => 9999,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'user_type_id' => 5,
+                'name' => 'Seminar (International Industry)',
+                'description' => 'Seminar (International Industry)',
+                'currency' => 'USD',
+                'price' => 75.00,
+                'quota' => 999,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'user_type_id' => 3,
+                'name' => 'Seminar (National Lecturer)',
+                'description' => 'Seminar (National Lecturer)',
+                'currency' => 'IDR',
+                'price' => 500000.00,
+                'quota' => 999,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'user_type_id' => 6,
+                'name' => 'Seminar (International Lecturer)',
+                'description' => 'Seminar (International Lecturer)',
+                'currency' => 'USD',
+                'price' => 75.00,
+                'quota' => 999,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'user_type_id' => 4,
+                'name' => 'Seminar (National Student)',
+                'description' => 'Seminar (National Student)',
+                'currency' => 'IDR',
+                'price' => 500000.00,
+                'quota' => 999,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'user_type_id' => 7,
+                'name' => 'Seminar (International Student)',
+                'description' => 'Seminar (International Student)',
+                'currency' => 'USD',
+                'price' => 75.00,
+                'quota' => 999,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]
         ]);
 
 

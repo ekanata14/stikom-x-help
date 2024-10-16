@@ -6,6 +6,9 @@
             </a>, <a href="https://www.instagram.com/ivanmesaa/" target="_blank"
                 class="text-blue-600 hover:underline">
                 Ivan Mesa
+            </a>, <a href="https://www.instagram.com/adigunapermana88/" target="_blank"
+                class="text-blue-600 hover:underline">
+                AGP
             </a></span>
         {{-- <span>
             <x-heroicon-s-heart class="w-6 h-6 text-red-500" />

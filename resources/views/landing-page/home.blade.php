@@ -122,7 +122,8 @@
                         <div class="col-4">
                             <div class="card">
                                 <div class="card-body text-center cream csize">
-                                    <p class="card-text m-2">INDUSTRY/GOVERNMENT</p>
+                                    <p class="card-text m-1">INDUSTRY/</p>
+                                    <p class="card-text m-1">GOVERNMENT</p>
                                 </div>
                             </div>
                         </div>
@@ -227,7 +228,7 @@
                 processed through our secure payment gateway. A personalized payment
                 link will be sent directly to your email. Please follow the link to
                 complete your transaction quickly and securely. For questions or
-                assistance, please contact our support team <b>Julius Ngantung</b>, via WA at<a href="html_images.asp"
+                assistance, please contact our support team <b>Julius Ngantung</b>, via WA at<a href="https://wa.me/081337257999"
                     target="_blank "
                     style="
               color: hsl(209, 100%, 63%);
@@ -282,5 +283,28 @@
               </p>
               <br/>
             </div> --> 
+    <section>
+      <h4 class="text-center">Benefit:</h4><br/>
+      <div class="container text-center justify-content-center d-flex">
+        <div class="row benefit">
+          <div class="col-4">
+            <img
+              src="assets/certificate.png"
+              alt="" width="50%" height="50%"
+            />
+            <br/><br/><h6>Certificate</h6>
+          </div>
+          <div class="col-4">
+            <img src="assets/merchandise.png" alt="" width="50%" height="50%" />
+            <br/><br/><h6>Merchandise</h6>
+          </div>
+          <div class="col-4">
+            <img src="assets/open-book.png" alt="" width="50% " height="50%" />
+            <br/><br/><h6>Seminar Kit</h6>
+          </div>
+        </div>
+      </div>
+    </section>
+
         @include('landing-page.partials.time')
 @endsection

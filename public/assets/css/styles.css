@@ -176,3 +176,24 @@ section.module.parallax-3 {
 .csize {
   height: 80px !important;
 }
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .card-text {
+    font-size: 14px;
+  }
+  .benefit {
+    width: 50;
+    height: 50;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-text {
+    font-size: 14px;
+  }
+  .benefit {
+    width: 50;
+    height: 50;
+  }
+}

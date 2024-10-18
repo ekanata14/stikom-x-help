@@ -138,14 +138,14 @@
                 </div>
             </div>
         </div>
-        <!-- <div
+        <div
                 class="container d-flex justify-content-center mt-4 fw-bold fst-italic"
               >
                 <h3>
-                  EARLY - BIRD
-                  <a style="color: red">VALID UNTIL 9 NOVEMBER 2024</a>
+                  REGISTRATION
+                  <a style="color: red">VALID UNTIL 16 NOVEMBER 2024</a>
                 </h3>
-              </div> -->
+              </div> 
 
         <div class="container d-flex mt-4">
             <br />
@@ -169,5 +169,29 @@
             </p>
         </div>
     </section>
+
+    <section>
+      <h4 class="text-center">Benefit:</h4><br/>
+      <div class="container text-center justify-content-center d-flex">
+        <div class="row benefit">
+          <div class="col-4">
+            <img
+              src="assets/certificate.png"
+              alt="" width="50%" height="50%"
+            />
+            <br/><br/><h6>Certificate</h6>
+          </div>
+          <div class="col-4">
+            <img src="assets/merchandise.png" alt="" width="50%" height="50%" />
+            <br/><br/><h6>Merchandise</h6>
+          </div>
+          <div class="col-4">
+            <img src="assets/open-book.png" alt="" width="50% " height="50%" />
+            <br/><br/><h6>Seminar Kit</h6>
+          </div>
+        </div>
+      </div>
+    </section>
+
     @include('landing-page.partials.time')
 @endsection

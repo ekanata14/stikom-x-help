@@ -98,7 +98,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Seminar (National Student)',
                 'description' => 'Seminar (National Student)',
                 'currency' => 'IDR',
-                'price' => 500000.00,
+                'price' => 450000.00,
                 'quota' => 999,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),

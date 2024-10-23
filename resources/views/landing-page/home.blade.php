@@ -289,17 +289,17 @@
         <div class="row benefit">
           <div class="col-4">
             <img
-              src="assets/certificate.png"
+              src="assets/images/certificate.png"
               alt="" width="50%" height="50%"
             />
             <br/><br/><h6>Certificate</h6>
           </div>
           <div class="col-4">
-            <img src="assets/merchandise.png" alt="" width="50%" height="50%" />
+            <img src="assets/images/merchandise.png" alt="" width="50%" height="50%" />
             <br/><br/><h6>Merchandise</h6>
           </div>
           <div class="col-4">
-            <img src="assets/open-book.png" alt="" width="50% " height="50%" />
+            <img src="assets/images/open-book.png" alt="" width="50% " height="50%" />
             <br/><br/><h6>Seminar Kit</h6>
           </div>
         </div>

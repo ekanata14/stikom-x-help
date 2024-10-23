@@ -87,96 +87,105 @@
         @yield('content')
     </main>
     <footer>
-        <div class="container my-4 py-4">
-            <div class="row content my-4">
-                <div class="row row-cols-1 col-md-4 col-sm-6 justify-content-end">
-                    <div class="col text-center">
-                    <h5>FOR MORE INFORMATION</h5>
-                    <br>
-                    <p>
-                      Contact Person : 
-                      <a
-                      href="https://wa.me/081337257999"
-                      target="_blank "
-                      style="
-                        color: hsl(209, 100%, 63%);
-                        background-color: transparent;
-                        text-decoration: none;
-                      "
-                    >
-                    +62 813-3725-7999</a
-                    > <br>
-                      Email :               <a
-                      href="https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=julius@stikom-bali.ac.id"
-                      target="_blank "
-                      style="
-                        color: hsl(209, 100%, 63%);
-                        background-color: transparent;
-                        text-decoration: none;
-                      "
-                    >
-                    julius@stikom-bali.ac.id</a
-                    >
-                    </p><br/>
-                  </div>
-                <div class="row row-cols-1 col-md-4 col-sm-6 justify-content-end">
-                    <div class="col text-center">
-                        <h5>SPONSOR BY:</h5>
-                    </div>
-                    <br />
-                    <div class="row content d-flex align-items-center justify-content-center">
-                        {{-- <div class="col-4">
-                            <img src="assets/images/esg.png" alt="" width="70%" height="70%" />
-                        </div> --}}
-                        <div class="col-4">
-                            <img src="assets/images/stikom.png" alt="" width="70%" height="70%" />
-                        </div>
-                        <div class="col-4">
-                            <img src="assets/images/help.png" alt="" width="70% " height="70%" />
-                        </div>
-                    </div>
-                </div>
-                <div class="row row-cols-1 col-md-4 col-sm-6 justify-content-end">
-                    <div class="col text-center">
-                      <h5>SOCIAL MEDIA</h5>
-                    </div>
-                    <div
-                      class="row content d-flex align-items-center justify-content-center p-3"
-                    >
-                      <div class="col-2">
-                        <a href="https://wa.me/081337257999" class="me-4 text-reset">
-                          <i class="fab fa-whatsapp fa-3x"></i>
-                        </a>
-                      </div>
-                      <div class="col-2">
-                        <a href="https://www.facebook.com/STIKOM.Bali/?locale=id_ID" class="me-4 text-reset">
-                          <i class="fab fa-facebook fa-3x"></i>
-                        </a>
-                      </div>
-                      <div class="col-2">
-                        <a href="https://www.instagram.com/stikombali?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="me-4 text-reset">
-                          <i class="fab fa-instagram fa-3x"></i>
-                        </a>
-                      </div>
-                      <div class="col-2">
-                        <a href="https://www.youtube.com/@STIKOMBalialwaysthefirst" class="me-4 text-reset">
-                          <i class="fab fa-youtube fa-3x"></i>
-                        </a>
-                      </div>
-                      <p></p><br/>
-                    </div>
-                  </div>
-                </div>
+      <div class="container my-4 py-4">
+        <div class="row content my-4">
+          <div class="row row-cols-1 col-md-4 col-sm-6 justify-content-end">
+            <div class="col text-center">
+            <h5>FOR MORE INFORMATION</h5>
+            <br>
+            <p>
+              Contact Person : 
+              <a
+              href="https://wa.me/081337257999"
+              target="_blank "
+              style="
+                color: hsl(209, 100%, 63%);
+                background-color: transparent;
+                text-decoration: none;
+              "
+            >
+            +62 813-3725-7999</a
+            > <br>
+              Email :               <a
+              href="https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=julius@stikom-bali.ac.id"
+              target="_blank "
+              style="
+                color: hsl(209, 100%, 63%);
+                background-color: transparent;
+                text-decoration: none;
+              "
+            >
+            julius@stikom-bali.ac.id</a
+            >
+            </p><br/>
+          </div>
+          </div>
+          <div class="row row-cols-1 col-md-4 col-sm-6 justify-content-end">
+            <div class="col text-center">
+              <h5>SPONSOR BY:</h5>
             </div>
+            <br />
+            <div
+              class="row content d-flex align-items-center justify-content-center"
+            >
+              <!-- <div class="col-4">
+                <img src="assets/esg.png" alt="" width="70%" height="70%" />
+              </div> -->
+              <div class="col-4">
+                <img src="assets/stikom.png" alt="" width="70%" height="70%" />
+              </div>
+              <div class="col-4">
+                <img src="assets/help.png" alt="" width="70% " height="70%" />
+              </div>
+              <p></p><br/>
+            </div>
+          </div>
+          <div class="row row-cols-1 col-md-4 col-sm-6 justify-content-end">
+            <div class="col text-center">
+              <h5>SOCIAL MEDIA</h5>
+            </div>
+            <div
+              class="row content d-flex align-items-center justify-content-center p-3"
+            >
+              <div class="col-2">
+                <a href="https://wa.me/081337257999" class="me-4 text-reset">
+                  <i class="fab fa-whatsapp fa-3x"></i>
+                </a>
+              </div>
+              <div class="col-2">
+                <a href="#" class="me-4 text-reset">
+                  <i class="fab fa-facebook fa-3x"></i>
+                </a>
+              </div>
+              <div class="col-2">
+                <a href="#" class="me-4 text-reset">
+                  <i class="fab fa-instagram fa-3x"></i>
+                </a>
+              </div>
+              <div class="col-2">
+                <a href="#" class="me-4 text-reset">
+                  <i class="fab fa-youtube fa-3x"></i>
+                </a>
+              </div>
+              <p></p><br/>
+            </div>
+          </div>
         </div>
-        <div class="text-center p-3 text-white fw-semibold" style="background-color: black">
-            Copyright © ESG : Ecology Of Bali 2024
-        </div>
+      </div>
+      <div
+        class="text-center p-3 text-white fw-semibold"
+        style="background-color: black"
+      >
+        Copyright © ESG : Ecology Of Bali 2024
+      </div>
     </footer>
     <script src="scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
 
 </body>
 

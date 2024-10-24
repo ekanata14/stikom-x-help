@@ -209,14 +209,14 @@
                 </div>
             </div>
         </div>
-        <!-- <div
+        <div
                 class="container d-flex justify-content-center mt-4 fw-bold fst-italic"
               >
                 <h3>
-                  EARLY - BIRD
-                  <a style="color: red">VALID UNTIL 9 NOVEMBER 2024</a>
+                  REGISTRATION
+                  <a style="color: red">VALID UNTIL 20 NOVEMBER 2024</a>
                 </h3>
-              </div> -->
+              </div>
 
         <div class="container d-flex mt-4">
             <br />

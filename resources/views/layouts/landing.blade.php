@@ -132,10 +132,10 @@
                 <img src="assets/esg.png" alt="" width="70%" height="70%" />
               </div> -->
               <div class="col-4">
-                <img src="assets/stikom.png" alt="" width="70%" height="70%" />
+                <img src="assets/images/stikom.png" alt="" width="70%" height="70%" />
               </div>
               <div class="col-4">
-                <img src="assets/help.png" alt="" width="70% " height="70%" />
+                <img src="assets/images/help.png" alt="" width="70% " height="70%" />
               </div>
               <p></p><br/>
             </div>

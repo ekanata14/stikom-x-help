@@ -2,7 +2,7 @@
 @section('content')
     <section class="module parallax2 parallax-3 d-flex mb-4">
         <div class="container d-flex text-center align-items-center justify-content-center text-white">
-            <h2>COMITTEE</h2>
+            <h2>COMMITTEE</h2>
         </div>
     </section>
 

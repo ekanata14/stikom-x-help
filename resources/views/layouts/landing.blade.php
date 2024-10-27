@@ -43,7 +43,7 @@
                                 </li>
                                 <li>
                                     <a class="dropdown-item {{ request()->routeIs('commitee') ? 'active' : '' }}"
-                                        href="{{ route('commitee') }}">Comittee</a>
+                                        href="{{ route('commitee') }}">Committee</a>
                                 </li>
                             </ul>
                         </li>
@@ -59,7 +59,7 @@
                             <ul class="dropdown-menu">
                                 <li>
                                     <a class="dropdown-item {{ request()->routeIs('accomodation') ? 'active' : '' }}"
-                                        href="{{ route('accomodation') }}">All Accomodation</a>
+                                        href="{{ route('accomodation') }}">All Accommodation</a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item {{ request()->routeIs('travel') ? 'active' : '' }}"

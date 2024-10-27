@@ -18,7 +18,7 @@
                         <td>
                             Dr. Dadang Hermawan, S.E., M.M., Ak.<br />
                             Professor Datuk Dr Paul Chan<br />
-                            Professor Andy Liew<br />
+                            Professor Dr. Andy Liew<br />
                             Dr. Roy Rudolf Huizen, ST., MT<br />
                             Dr. Ni Luh Putri Srinadi SE., MM. Kom.<br />
                             Yudi Agusta Ph.D.

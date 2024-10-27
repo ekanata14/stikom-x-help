@@ -76,7 +76,7 @@
             class="rounded-circle mb-3"
             alt=""
           />
-          <h5>Professor Dr. Andy Liew</h5>
+          <h5>Prof. Dr. Andy Liew</h5>
           <h6>Vice Chancellor, HELP University</h6>
           <p>
             Over a span of 30 years Prof Liew

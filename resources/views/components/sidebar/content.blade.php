@@ -15,23 +15,29 @@
     @endif
 
     @if (auth()->user()->id_user_type == 1)
-        <x-sidebar.link title="Admin" href="{{ route('users.admin') }}" :isActive="request()->routeIs('users.admin')">
-        </x-sidebar.link>
-        <x-sidebar.link title="Users" href="{{ route('users.index') }}" :isActive="request()->routeIs('users.index') ||
-            request()->routeIs('users.create') ||
-            request()->routeIs('users.edit')">
-        </x-sidebar.link>
-        <x-sidebar.link title="User Types" href="{{ route('user-types.index') }}" :isActive="request()->routeIs('user-types.index') ||
-            request()->routeIs('user-types.create') ||
-            request()->routeIs('user-types.edit')">
-        </x-sidebar.link>
-        <x-sidebar.link title="Products" href="{{ route('products.index') }}" :isActive="request()->routeIs('products.index')">
-        </x-sidebar.link>
-        <x-sidebar.link title="Purchases({{ $pendingPurchasesCount }})" href="{{ route('purchase.index') }}"
-            :isActive="request()->routeIs('purchase.index')">
-        </x-sidebar.link>
-        <x-sidebar.link title="Check In" href="{{ route('user-types.index') }}" :isActive="request()->routeIs('check-in')">
-        </x-sidebar.link>
+        @if (auth()->user()->email == 'finance@esgbali.org')
+            <x-sidebar.link title="Purchases({{ $pendingPurchasesCount }})" href="{{ route('purchase.index') }}"
+                :isActive="request()->routeIs('purchase.index')">
+            </x-sidebar.link>
+        @else
+            <x-sidebar.link title="Admin" href="{{ route('users.admin') }}" :isActive="request()->routeIs('users.admin')">
+            </x-sidebar.link>
+            <x-sidebar.link title="Users" href="{{ route('users.index') }}" :isActive="request()->routeIs('users.index') ||
+                request()->routeIs('users.create') ||
+                request()->routeIs('users.edit')">
+            </x-sidebar.link>
+            <x-sidebar.link title="User Types" href="{{ route('user-types.index') }}" :isActive="request()->routeIs('user-types.index') ||
+                request()->routeIs('user-types.create') ||
+                request()->routeIs('user-types.edit')">
+            </x-sidebar.link>
+            <x-sidebar.link title="Products" href="{{ route('products.index') }}" :isActive="request()->routeIs('products.index')">
+            </x-sidebar.link>
+            <x-sidebar.link title="Purchases({{ $pendingPurchasesCount }})" href="{{ route('purchase.index') }}"
+                :isActive="request()->routeIs('purchase.index')">
+            </x-sidebar.link>
+            <x-sidebar.link title="Check In" href="{{ route('user-types.index') }}" :isActive="request()->routeIs('check-in')">
+            </x-sidebar.link>
+        @endif
     @else
         {{-- <x-sidebar.link title="Purchases" href="{{ route('user-types.index') }}" :isActive="request()->routeIs('check-in')">
         </x-sidebar.link> --}}

@@ -35,8 +35,8 @@
                             Ayu Chrisniyanti, S.Kom., MBA<br />
                             Kadek Surya Adi Saputra,S.Kom.,M.Kom<br />
                             I Komang Dharmendra, S.Kom.,M.T.<br />
-                            Dr. I Gusti Ayu Widari Upadani, M.Agb<br />
                             Ni Nyoman Supuwiningsih, S.T., M.Kom<br />
+                            Dr. I Gusti Ayu Widari Upadani, M.Agb<br />
                             I Made Pasek Pradnyana Wijaya, S.Kom,. M.Kom<br />
                             Matius Ivan Bimasena, S.Kom<br />
                             Ni Wayan Ari Ulandari, S.Kom., M.Kom<br />

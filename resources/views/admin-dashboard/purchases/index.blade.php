@@ -157,8 +157,19 @@
                                                         </div>
                                                         <!-- Modal body -->
                                                         <div class="p-4 md:p-5 space-y-4 flex justify-center">
-                                                            <img src="{{ route('purchase.receipt.admin', ['id' => $purchase->id]) }}"
-                                                                alt="Receipt Image" class="h-[500px]">
+                                                            @if (route('purchase.receipt.admin', ['id', $purchase->id]) == 0)
+                                                                <h3>There are no receipt</h3>
+                                                            @else
+                                                                <img src="{{ route('purchase.receipt.admin', ['id' => $purchase->id]) }}"
+                                                                    alt="Receipt Image" class="h-[500px]"
+                                                                    onerror="handleImageError(this)">
+                                                                <script>
+                                                                    function handleImageError(image) {
+                                                                        // Change the image to a placeholder or handle the error visually
+                                                                        image.alt = "Receipt Image Not uploaded yet";
+                                                                    }
+                                                                </script>
+                                                            @endif
                                                         </div>
                                                         <!-- Modal footer -->
                                                         <div

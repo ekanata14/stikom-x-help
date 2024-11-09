@@ -122,10 +122,12 @@ class PurchaseController extends Controller
         if (Storage::disk('private')->exists('receipts/' . $purchase->payment_receipt)) {
             // Jika file ditemukan, tampilkan sebagai response download
             return Storage::disk('private')->download('receipts/' . $purchase->payment_receipt);
+        } else{
+            return 0;
         }
 
         // Jika file tidak ditemukan, kembalikan response error
-        return back()->with('error', 'Receipt not found.');
+        // return back()->with('error', 'Receipt not found.');
     }
 
     public function download(string $id)

@@ -27,9 +27,7 @@
             <h5>Professor Datuk Dr Paul Chan</h5>
             <h6>Chancellor, HELP University</h6>
             <p>
-              Dr Chan is a co-founder of the HELP Education Group. He is the
-              Chancellor of HELP University. An economist, he focuses on life
-              management and future legacy building.
+              He is Founder and President of HELP University (Malaysia), a highly respected international private university that manages more than 10,000 students in Malaysia and Asia. He is also Executive Director of HELP International Corporation which is listed on the Malaysian Stock Exchange. An economist by training, he studied at the University of Malaya and McMaster University, Canada and completed his PhD at the Australian National University. Dr. Chan has a distinguished academic career. He was Chairman, Division of Applied Economics, University of Malaya. He has published widely, taught in many universities, and participated in numerous professional seminars.
             </p>
           </div>
           <div class="col-md-6">

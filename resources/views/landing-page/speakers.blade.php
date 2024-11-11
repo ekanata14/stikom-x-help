@@ -129,20 +129,7 @@
           </div>
           <div class="col-md-6">
             <img
-              src="assets/images/ida.jpeg"
-              height="150"
-              width="150"
-              class="rounded-circle mb-3"
-              alt=""
-            />
-            <h5>Dr. Ida Bagus Rai Dharmawijaya Mantra</h5>
-            <h6>Politician</h6>
-            <p>Ida Bagus Rai Dharmawijaya Mantra, S.E., M.Sc., or commonly called Rai Mantra (born April 30, 1967) is an Indonesian politician. He served as Mayor of Denpasar from 2008 to 2010, replacing Anak Agung Gede Ngurah Puspayoga who became Deputy Governor of Bali. He was then elected in the Denpasar regional election and served for the 2010-2015 period and the 2016-2021 period. In 2018, Rai Mantra ran as a candidate for governor of Bali in the 2018 regional election.</p>
-          </div>
-          <div class="text-center mt-5">
-            <h4>MODERATOR</h4>
-            <img
-              src="assets/images/marlowe.jpeg"
+              src="assets/images/marloebandem.jpeg"
               height="150"
               width="150"
               class="rounded-circle mb-3"
@@ -150,8 +137,21 @@
             />
             <h5>I Made Marlowe Makaradhwaja Bandem</h5>
             <h6>Artist</h6>
+            <p>Marlowe Bandem, is a co-founder of the Bali 1928 Archives, which preserves historical documents from Bali in the 1930s. He is also a banker and a writer/art curator. He is currently the Executive Director of Quantum Temple in Indonesia, a Web 3.0 and blockchain platform for cultural preservation, and an advisor to SAKA Museumi, which is listed in TIME Magazine’s World’s Famous Places 2024.</p>
+          </div>
+          <div class="text-center mt-5">
+            <h4>MODERATOR</h4>
+            <img
+              src="assets/images/prapita.jpeg"
+              height="150"
+              width="150"
+              class="rounded-circle mb-3"
+              alt=""
+            />
+            <h5>Luh Putu Ayu Prapitasari, S.T., M.Sc</h5>
+            <h6>Senior Lecturer</h6>
             <p>
-              I Made Marlowe Makaradhwaja Bandem is an individual with eclectic talents, interests and professions. Marlowe co-founded 370s in July 1928 to realize an economic vision. Together with his beloved wife 370s-Marl. Marlowe is also known as a banker. He manages various financial challenges in spirit. Marlowe also pursues the dynamic world of art and technology, currently he is part of Quantum Temple, which utilizes Web 3.0 and blockchain for the preservation of indigenous cultural heritage.
+            Luh Putu Ayu Prapitasari is a senior lecturer at the STIKOM Bali Institute of Technology and Business since 2005, and a guest lecturer at the Malang State Polytechnic (Polinema) since 2023. She has an educational background of M.Sc. Computer Science from the University of Mysore, India, and S.Kom. Informatics Engineering from the Indonesian Digital Technology University, Yogyakarta.  
             </p>
           </div>
         </div>

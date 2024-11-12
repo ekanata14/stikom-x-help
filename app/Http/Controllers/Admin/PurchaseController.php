@@ -57,6 +57,10 @@ class PurchaseController extends Controller
     public function store(Request $request)
     {
         // Create carts first
+        $checkCart = Cart::with('Purchase')->where('user_id', $request->user_id)->where('is_checkout', true)->first();
+        if($checkCart){
+            return redirect()->route('user.purchase.upload.receipt', $checkCart->purchase->id)->with('warning', 'You already have a purchasement. Please upload your receipt.');
+        } else{
         $cart = Cart::create([
             'user_id' => $request->user_id,
             'is_checkout' => true,
@@ -67,6 +71,8 @@ class PurchaseController extends Controller
             'cart_id' => $cart->id,
             'product_id' => $request->product_id,
         ]);
+
+        // 1. Jika user sudah memiliki cart maka return error bahwa user sudah memiliki cart, 1 user hanya bisa memiliki 1 cart
 
         // Create invoice formatting
         $invoice = 'INV-' . date('Ymd') . '-' . $cart->id;
@@ -96,6 +102,7 @@ class PurchaseController extends Controller
         // Purchase::create($request->all());
 
         return redirect()->route('user.purchase.upload.receipt', $purchase->id)->with('success', 'Purchase created successfully. Upload your receipt.');
+        }
     }
 
     public function uploadReceipt(Request $request)

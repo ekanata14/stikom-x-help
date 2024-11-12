@@ -102,7 +102,7 @@ class PurchaseController extends Controller
     {
         $purchase = Purchase::find($request->id);
         $request->validate([
-            'payment_receipt' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'payment_receipt' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
         $imageName = time() . '.' . $request->payment_receipt->extension();

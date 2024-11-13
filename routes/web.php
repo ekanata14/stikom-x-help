@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\Admin\CartItemController;
 use App\Http\Controllers\Admin\PurchaseController;
+use App\Http\Controllers\Admin\CheckInController;
 
 // User
 use App\Http\Controllers\Users\DashboardController as UserDashboardController;
@@ -95,6 +96,9 @@ Route::middleware(['AuthAdmin'])->group(function () {
     // Payment Receipt Routes
     Route::get('/purchase/receipt/{id}', [PurchaseController::class, 'showReceipt'])->name('purchase.receipt.admin');
     Route::get('/user/student/card/{id}', [UsersController::class, 'showStudentCard'])->name('user.student.card');
+    
+    // Check In Routes
+    Route::get('/check-in', [CheckInController::class, 'index'])->name('checkin.index');
 });
 
 Route::middleware('auth')->group(function () {

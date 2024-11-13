@@ -12,6 +12,7 @@ use App\Models\Purchase;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\CartItem;
+use App\Models\UserType;
 
 class PurchaseController extends Controller
 {
@@ -21,6 +22,7 @@ class PurchaseController extends Controller
             'title' => 'Purchase Management',
             'activePage' => 'purchases',
             'purchases' => Purchase::with(['cart', 'user'])->orderByDesc('created_at')->paginate(10),
+            'userTypes' => UserType::all(),
         ];
         return view('admin-dashboard.purchases.index', $viewData);
     }

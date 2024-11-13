@@ -19,6 +19,10 @@
             <x-sidebar.link title="Purchases({{ $pendingPurchasesCount }})" href="{{ route('purchase.index') }}"
                 :isActive="request()->routeIs('purchase.index')">
             </x-sidebar.link>
+            <x-sidebar.link title="Users" href="{{ route('users.index') }}" :isActive="request()->routeIs('users.index') ||
+                request()->routeIs('users.create') ||
+                request()->routeIs('users.edit')">
+            </x-sidebar.link>
         @else
             <x-sidebar.link title="Admin" href="{{ route('users.admin') }}" :isActive="request()->routeIs('users.admin')">
             </x-sidebar.link>

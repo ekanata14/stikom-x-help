@@ -5,9 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\CheckIn;
 use Illuminate\Http\Request;
+use Zxing\QrReader;
+
 
 class CheckInController extends Controller
 {
+    public function processQRCode(Request $request){
+        
+    }
     /**
      * Display a listing of the resource.
      */

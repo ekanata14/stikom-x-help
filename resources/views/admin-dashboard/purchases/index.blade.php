@@ -57,7 +57,7 @@
                                         <td class="px-6 py-4">
                                             @php
                                                 $currency = null;
-                                                if($purchase->currency = "USD"){
+                                                if($purchase->currency == "USD"){
                                                     $currency = "USD";
                                                 } else {
                                                     $currency = "IDR";

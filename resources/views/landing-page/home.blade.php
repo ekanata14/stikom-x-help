@@ -218,27 +218,58 @@
                 </h3>
               </div>
 
-        <div class="container d-flex mt-4">
-            <br />
-            <h6 class="fw-bold">Payment Notification:</h6>
-        </div>
-        <div class="container">
-            <p>
-                We are pleased to inform you that payment for our services can be
-                processed through our secure payment gateway. A personalized payment
-                link will be sent directly to your email. Please follow the link to
-                complete your transaction quickly and securely. For questions or
-                assistance, please contact our support team <b>Julius Ngantung</b>, via WA at<a href="https://wa.me/081337257999"
-                    target="_blank "
-                    style="
-              color: hsl(209, 100%, 63%);
-              background-color: transparent;
-              text-decoration: none;
-            ">
-                    +62 813-3725-7999</a>
-                <br /><br />
-            </p>
-        </div>
+           <div class="container d-flex mt-4">
+      <br />
+      <h4 class="fw-bold">How To Register:</h4>
+    </div>
+    <div class="container">
+      <p>
+        1. Click the Login/Register button
+      </p>
+      <p>
+        2. Click Register
+      </p>
+      <p>
+        3. fill in the form correctly and completely
+        <br><b>*For ITB STIKOM Bali students, select Participant Type: ITB STIKOM Bali Student (International/Regular)</b>
+      </p>
+      <p>
+        4. Pay via :
+        <br>Bank Transfer : <b>BNI 0069008818 (National)</b> 
+        <br>Swift Code : <b>BNINIDJADPS (International)</b>
+      </p>
+      <p>
+        5. Send proof of payment
+      </p>
+      <p>
+        6. Wait for the verification process
+      </p>
+      </div>
+      
+      <div class="container d-flex mt-4">
+        <br />
+        <h4 class="fw-bold">Payment Information:</h5>
+      </div>
+      <div class="container">
+      <p>
+        We are pleased to inform you that payment for our services can be
+        processed through our secure payment gateway. A personalized payment
+        link will be sent directly to your email. Please follow the link to
+        complete your transaction quickly and securely. For questions or
+        assistance, please contact our support team, Nia, via WA at<a
+          href="https://wa.me/081337257999"
+          target="_blank "
+          style="
+            color: red;
+            background-color: transparent;
+            text-decoration: none;
+          "
+        >
+          +62 858-5894-1945</a
+        >
+        <br /><br />
+      </p>
+    </div>
     </section>
 
     <!-- <div class="container d-flex mt-4">

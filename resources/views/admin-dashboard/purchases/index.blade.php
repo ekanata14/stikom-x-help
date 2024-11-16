@@ -27,13 +27,13 @@
                                         Total Price
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Status
+                                        Admin Verification
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         Payment Method
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Payment Status
+                                        Payment Receipt
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         Actions

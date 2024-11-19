@@ -7,12 +7,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
+// Mail
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ReceiptMail;
+
 // Models
 use App\Models\Purchase;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\CartItem;
 use App\Models\UserType;
+use App\Models\User;
 
 class PurchaseController extends Controller
 {
@@ -156,8 +161,12 @@ class PurchaseController extends Controller
     public function verify(Request $request)
     {
         $purchase = Purchase::find($request->id);
+        $invoice_id = $purchase->invoice_id;
+        $user = User::find($purchase->user_id);
         $purchase->status = 'paid';
         $purchase->save();
+
+        $mail = Mail::to($user->email)->send(new ReceiptMail($invoice_id));
 
         return back()->with('success', 'Purchase verified successfully.');
     }

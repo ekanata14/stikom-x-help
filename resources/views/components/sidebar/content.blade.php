@@ -36,8 +36,11 @@
             </x-sidebar.link>
             <x-sidebar.link title="Products" href="{{ route('products.index') }}" :isActive="request()->routeIs('products.index')">
             </x-sidebar.link>
-            <x-sidebar.link title="Purchases({{ $pendingPurchasesCount }})" href="{{ route('purchase.index') }}"
+            <x-sidebar.link title="Purchases" href="{{ route('purchase.index') }}"
                 :isActive="request()->routeIs('purchase.index')">
+            </x-sidebar.link>
+            <x-sidebar.link title="Verified Purchases" href="{{ route('purchase.verified') }}"
+                :isActive="request()->routeIs('purchase.verified')">
             </x-sidebar.link>
             <x-sidebar.link title="Check In" href="{{ route('user-types.index') }}" :isActive="request()->routeIs('check-in')">
             </x-sidebar.link>

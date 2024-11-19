@@ -26,7 +26,18 @@ class PurchaseController extends Controller
         $viewData = [
             'title' => 'Purchase Management',
             'activePage' => 'purchases',
-            'purchases' => Purchase::with(['cart', 'user'])->orderByDesc('created_at')->paginate(10),
+            'purchases' => Purchase::with(['cart', 'user'])->where('status', '=', 'pending')->orderByDesc('created_at')->paginate(10),
+            'userTypes' => UserType::all(),
+        ];
+        return view('admin-dashboard.purchases.index', $viewData);
+    }
+    
+    public function verified()
+    {
+        $viewData = [
+            'title' => 'Purchase Management',
+            'activePage' => 'purchases',
+            'purchases' => Purchase::with(['cart', 'user'])->where('status', '=', 'paid')->orderByDesc('created_at')->paginate(10),
             'userTypes' => UserType::all(),
         ];
         return view('admin-dashboard.purchases.index', $viewData);

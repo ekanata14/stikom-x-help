@@ -33,35 +33,20 @@
           <div class="col-md-6">
             <h5 class="mb-2">SPEAKER 2</h5>
             <img
-              src="assets/images/datukdr.jpeg"
+              src="assets/images/bandem.jpeg"
               height="150"
               width="150"
               class="rounded-circle mb-3"
               alt=""
             />
-            <h5>Dr. Stephen Moss</h5>
-            <h6>Chairman, DAI Capital</h6>
+            <h5>Prof. Dr. I Made Bandem</h5>
+            <h6>Foundation Trustee Of ITB STIKOM Bali</h6>
             <p>
-              Dr Moss is a consultant and adviser
-              with a background in law,
-              psychology and business. He is also
-              an early-stage entrepreneurial
-              investor in start-ups and growth
-              companies in financial and
-              professional services, law and
-              biotechnology. He held leading
-              roles in PwC, IBM Consulting and
-              Cardno Acil, as well as managed
-              company sales, acquisitions and
-              mergers. He has consulted for over
-              25 years with international, UK and
-              Australian law firms in the legal
-              and health services industries.
-              Dr Moss’s commitment to social
-              justice and human rights has led
-              him to work with Pathways
-              Foundation, Child Fund and
-              Amnesty International.
+Bandem served as the director of the Indonesian College of the Arts in Denpasar for 16 years. He was also the rector of Indonesia's oldest cultural institution, the Indonesia Institute of the Arts Yogyakarta. He is currently a professor of Balinese dance and music at the College of the Holy Cross in Worcester, Massachusetts, where he teaches music and dance dealing with the Bali-Gamelan.
+
+              As an artist and as a visiting scholar, Bandem has taught and performed Balinese dance throughout the world. In a 1980 profile, The New York Times described him as "the Joe Papp of Bali."
+          
+              Bandem's contributions to arts and culture include achievements in ethnomusicology, educational administration, arts and culture management, and politics.
             </p>
           </div>
         </div>
@@ -110,20 +95,35 @@
         <div class="row text-center">
           <div class="col-md-6">
             <img
-              src="assets/images/bandem.jpeg"
+              src="assets/images/datukdr.jpeg"
               height="150"
               width="150"
               class="rounded-circle mb-3"
               style="object-fit: cover; object-position: top;"
               alt=""
             />
-            <h5>Prof. Dr. I Made Bandem</h5>
-            <h6>Foundation Trustee Of ITB STIKOM Bali</h6>
-            <p>Bandem served as the director of the Indonesian College of the Arts in Denpasar for 16 years. He was also the rector of Indonesia's oldest cultural institution, the Indonesia Institute of the Arts Yogyakarta. He is currently a professor of Balinese dance and music at the College of the Holy Cross in Worcester, Massachusetts, where he teaches music and dance dealing with the Bali-Gamelan.
-
-              As an artist and as a visiting scholar, Bandem has taught and performed Balinese dance throughout the world. In a 1980 profile, The New York Times described him as "the Joe Papp of Bali."
-          
-              Bandem's contributions to arts and culture include achievements in ethnomusicology, educational administration, arts and culture management, and politics.</p>
+            <h5>Dr. Stephen Moss</h5>
+            <h6>Chairman, DAI Capital</h6>
+            <p>Dr Moss is a consultant and adviser
+              with a background in law,
+              psychology and business. He is also
+              an early-stage entrepreneurial
+              investor in start-ups and growth
+              companies in financial and
+              professional services, law and
+              biotechnology. He held leading
+              roles in PwC, IBM Consulting and
+              Cardno Acil, as well as managed
+              company sales, acquisitions and
+              mergers. He has consulted for over
+              25 years with international, UK and
+              Australian law firms in the legal
+              and health services industries.
+              Dr Moss’s commitment to social
+              justice and human rights has led
+              him to work with Pathways
+              Foundation, Child Fund and
+              Amnesty International.</p>
           </div>
           <div class="col-md-6">
             <img

@@ -82,7 +82,7 @@ Route::middleware(['AuthAdmin'])->group(function () {
 
     // Purchase Routes
     Route::get('/purchase', [PurchaseController::class, 'index'])->name('purchase.index');
-    Route::get('/purchase', [PurchaseController::class, 'verified'])->name('purchase.verified');
+    Route::get('/purchase/verified', [PurchaseController::class, 'verified'])->name('purchase.verified');
     Route::get('/purchase/create', [PurchaseController::class, 'create'])->name('purchase.create');
     Route::post('/purchase', [PurchaseController::class, 'store'])->name('purchase.store');
     Route::get('/purchase/edit/{id}', [PurchaseController::class, 'edit'])->name('purchase.edit');

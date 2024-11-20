@@ -214,7 +214,7 @@
               >
                 <h3>
                   REGISTRATION
-                  <a style="color: red">VALID UNTIL 20 NOVEMBER 2024</a>
+                  <a style="color: red">VALID UNTIL 21 NOVEMBER 2024</a>
                 </h3>
               </div>
 

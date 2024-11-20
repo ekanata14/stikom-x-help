@@ -16,8 +16,11 @@
 
     @if (auth()->user()->id_user_type == 1)
         @if (auth()->user()->email == 'finance@esgbali.org')
-            <x-sidebar.link title="Purchases({{ $pendingPurchasesCount }})" href="{{ route('purchase.index') }}"
+            <x-sidebar.link title="Purchases" href="{{ route('purchase.index') }}"
                 :isActive="request()->routeIs('purchase.index')">
+            </x-sidebar.link>
+            <x-sidebar.link title="Verified Purchases" href="{{ route('purchase.verified') }}"
+                :isActive="request()->routeIs('purchase.verified')">
             </x-sidebar.link>
             <x-sidebar.link title="Users" href="{{ route('users.index') }}" :isActive="request()->routeIs('users.index') ||
                 request()->routeIs('users.create') ||

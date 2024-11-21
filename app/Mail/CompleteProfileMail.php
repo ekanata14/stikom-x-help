@@ -29,7 +29,7 @@ class CompleteProfileMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Please Complete Your Profile')
+        return $this->subject('Please Complete Your Profile (NIM or Student Card)')
                     ->view('emails.complete-profile')
                     ->with('email', $this->email);
     }

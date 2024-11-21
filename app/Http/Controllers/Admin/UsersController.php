@@ -59,7 +59,8 @@ class UsersController extends Controller
 
     public function completeProfileEmail()
     {
-        $users = User::where('id_user_type', '=', '8')->get();
+        $users = User::where('id_user_type', '=', '8')->where('id', '>', 70)->get();
+        return $users;
 
         foreach ($users as $user) {
             MailHistory::create([

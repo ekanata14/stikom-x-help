@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ReceiptMail extends Mailable
+class NotifyMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -29,8 +29,8 @@ class ReceiptMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Your Receipt from ESG Bali')
-                    ->view('emails.receipt')
+        return $this->subject('Please Upload Your Payment Receipt')
+                    ->view('emails.upload-receipt')
                     ->with('invoice_id', $this->invoice_id);
     }
 }

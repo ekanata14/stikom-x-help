@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 // Mail
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ReceiptMail;
+use App\Mail\NotifyMail;
 
 // Models
 use App\Models\Purchase;
@@ -30,6 +31,16 @@ class PurchaseController extends Controller
             'userTypes' => UserType::all(),
         ];
         return view('admin-dashboard.purchases.index', $viewData);
+    }
+
+    public function emailNotify(Request $request){
+        $purchase = Purchase::find($request->id);
+        $invoice_id = $purchase->invoice_id;
+        $user = User::find($purchase->user_id);
+
+        $mail = Mail::to($user->email)->send(new NotifyMail($invoice_id));
+
+        return back()->with('success', 'User has been notified.');
     }
     
     public function verified()

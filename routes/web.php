@@ -93,6 +93,8 @@ Route::middleware(['AuthAdmin'])->group(function () {
     Route::post('/purchase/cancel', [PurchaseController::class, 'cancel'])->name('purchase.cancel');
     Route::post('/purchase/uncancel', [PurchaseController::class, 'uncancel'])->name('purchase.uncancel');
 
+    Route::post('/purchase/email-notify', [PurchaseController::class, 'emailNotify'])->name('purchase.email-notify');
+
     // Payment Receipt Routes
     Route::get('/purchase/receipt/{id}', [PurchaseController::class, 'showReceipt'])->name('purchase.receipt.admin');
     Route::get('/user/student/card/{id}', [UsersController::class, 'showStudentCard'])->name('user.student.card');

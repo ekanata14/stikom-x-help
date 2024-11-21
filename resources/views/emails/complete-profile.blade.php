@@ -156,9 +156,9 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:20px 10px 10px;font-family:arial,helvetica,sans-serif;" align="left">
         
   <!--[if mso]><table width="100%"><tr><td><![endif]-->
-    <h1 class="v-font-size" style="margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-size: 18px; font-weight: 400;"><span>{{ $email }}<br />Please Complete Your Profile (NIM or Student Card).</span></h1>
+    <h1 class="v-font-size" style="margin-bottom: 10px; line-height: 140%; text-align: center; word-wrap: break-word; font-size: 18px; font-weight: 400;"><span>{{ $email }}<br />Please Complete Your Profile (NIM or Student Card).</span></h1>
   <!--[if mso]></td></tr></table><![endif]-->
-    <h2 class="v-font-size" style="margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-size: 16px; font-weight: 300;">And QR Code for Attendance Check-In is Ready on Your Dashboard!</h2>
+    <h2 class="v-font-size" style="margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-size: 16px; font-weight: 300;">And Check-In QR Code is Ready on Your Dashboard!</h2>
       </td>
     </tr>
   </tbody>

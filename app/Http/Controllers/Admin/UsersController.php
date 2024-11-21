@@ -24,6 +24,7 @@ class UsersController extends Controller
             'title' => 'Users Management',
             'activePage' => 'users',
             'users' => User::where('id_user_type', '!=', 1)->paginate(10),
+            'userTypes' => UserType::all(),
         ];
 
         return view('admin-dashboard.users.index', $viewData);
@@ -35,6 +36,7 @@ class UsersController extends Controller
             'title' => 'Admin Management',
             'activePage' => 'admin',
             'users' => User::where('id_user_type', 1)->paginate(10),
+            'userTypes' => UserType::all(),
         ];
 
         return view('admin-dashboard.users.index', $viewData);

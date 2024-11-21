@@ -27,13 +27,13 @@
                                         Total Price
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Status
+                                        Admin Verification
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         Payment Method
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Payment Status
+                                        Payment Receipt
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         Actions
@@ -57,7 +57,7 @@
                                         <td class="px-6 py-4">
                                             @php
                                                 $currency = null;
-                                                if($purchase->currency = "USD"){
+                                                if($purchase->currency == "USD"){
                                                     $currency = "USD";
                                                 } else {
                                                     $currency = "IDR";
@@ -128,6 +128,17 @@
                                                     </form>
                                                 @endif
                                             @endif --}}
+                                            @if ($purchase->status == 'pending')
+                                                <form action="{{ route('purchase.email-notify') }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="{{ $purchase->id }}">
+                                                    <x-button variant="info">
+                                                        <x-heroicon-o-mail class="w-5 h-5" aria-hidden="true" />
+                                                        {{ __('Notify') }}
+                                                    </x-button>
+                                                </form>
+                                            @endif
+
                                             <!-- Modal toggle -->
                                             <button data-modal-target="receipt-modal-{{ $purchase->id }}"
                                                 data-modal-toggle="receipt-modal-{{ $purchase->id }}"

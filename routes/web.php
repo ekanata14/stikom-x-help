@@ -60,6 +60,9 @@ Route::middleware(['AuthAdmin'])->group(function () {
     Route::post('/user-types/update', [UserTypeController::class, 'update'])->name('user-types.update');
     Route::delete('/user-types/{id}', [UserTypeController::class, 'destroy'])->name('user-types.destroy');
 
+    // User Type Detail
+    Route::get('/user-types/detail/{id}', [UserTypeController::class, 'userTypeDetail'])->name('user-types.detail');
+
     // Cart Routes
     Route::get('carts', [CartController::class, 'index'])->name('carts.index');      // Menampilkan semua carts
     Route::get('carts/create', [CartController::class, 'create'])->name('carts.create'); // Form untuk membuat cart baru
@@ -83,6 +86,7 @@ Route::middleware(['AuthAdmin'])->group(function () {
 
     // Purchase Routes
     Route::get('/purchase', [PurchaseController::class, 'index'])->name('purchase.index');
+    Route::get('/purchase/verified', [PurchaseController::class, 'verified'])->name('purchase.verified');
     Route::get('/purchase/create', [PurchaseController::class, 'create'])->name('purchase.create');
     Route::post('/purchase', [PurchaseController::class, 'store'])->name('purchase.store');
     Route::get('/purchase/edit/{id}', [PurchaseController::class, 'edit'])->name('purchase.edit');
@@ -92,6 +96,8 @@ Route::middleware(['AuthAdmin'])->group(function () {
     Route::post('/purchase/unverify', [PurchaseController::class, 'unverify'])->name('purchase.unverify');
     Route::post('/purchase/cancel', [PurchaseController::class, 'cancel'])->name('purchase.cancel');
     Route::post('/purchase/uncancel', [PurchaseController::class, 'uncancel'])->name('purchase.uncancel');
+
+    Route::post('/purchase/email-notify', [PurchaseController::class, 'emailNotify'])->name('purchase.email-notify');
 
     // Payment Receipt Routes
     Route::get('/purchase/receipt/{id}', [PurchaseController::class, 'showReceipt'])->name('purchase.receipt.admin');

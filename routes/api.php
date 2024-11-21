@@ -15,3 +15,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/qr-check', [CheckInController::class, 'processQRCode']);
+Route::post('/checkin/store', [CheckInController::class, 'store']);

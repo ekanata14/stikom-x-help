@@ -6,12 +6,31 @@ use App\Http\Controllers\Controller;
 use App\Models\CheckIn;
 use Illuminate\Http\Request;
 use Zxing\QrReader;
+use App\Models\User;
 
 
 class CheckInController extends Controller
 {
-    public function processQRCode(Request $request){
-        
+    public function processQRCode(Request $request)
+    {
+        dd($request);
+        $dataURL = $request->input('image');
+
+        // Decode the base64 image string
+        $imageData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $dataURL));
+
+        // Save the image temporarily
+        $tempImagePath = storage_path('app/temp_qr.png');
+        file_put_contents($tempImagePath, $imageData);
+
+        // Decode the QR code
+        $qrcode = new QrReader($tempImagePath);
+        $text = $qrcode->text();
+
+        // Delete the temporary image
+        unlink($tempImagePath);
+
+        return response()->json(['qrCode' => $text]);
     }
     /**
      * Display a listing of the resource.
@@ -43,8 +62,20 @@ class CheckInController extends Controller
             'user_id' => 'required',
         ]);
 
-        try{
-            CheckIn::create($validatedData);
+        $user = User::find($validatedData['user_id']);
+        $checkInCheck = CheckIn::where('user_id', $user->id)->first();
+
+        try {
+            if ($checkInCheck) {
+                return response()->json([
+                    'message' => $user->complete_name . ' already checked in',
+                ], 400);
+            } else {
+                CheckIn::create($validatedData);
+                return response()->json([
+                    'message' => $user->complete_name . ' checked in successfully',
+                ]);
+            }
         } catch (\Exception $e) {
             return response()->json([
                 'message' => 'Failed to check in',

@@ -18,6 +18,11 @@
 
     <div
         class="mt-8 p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1 flex flex-col md:flex-row gap-8">
+        <div
+            class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-white dark:border-gray-700 flex flex-col justify-center items-center text-center p-4 gap-4 text-black">
+            <h3>QR Code</h3>
+            {!! $qrCode !!}
+        </div>
         {{-- card-start --}}
         @forelse ($purchases as $purchase)
             <div

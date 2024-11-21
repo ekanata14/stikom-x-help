@@ -157,6 +157,40 @@
             qrCode => {
                 // When a QR code is detected, handle the result
                 console.log("QR Code detected: ", qrCode);
+                fetch('http://localhost:8000/api/checkin/store', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({
+                            user_id: qrCode
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Handle the server response
+                        if (data) {
+                            Swal.fire({
+                                title: 'Success',
+                                text: data.message,
+                                icon: 'success',
+                                confirmButtonText: 'OK',
+                                timer: 2000
+                            });
+                            setTimeout(() => {
+                                openCamera();
+                            }, 2000); // Set timeout for 2 seconds before reopening the camera
+                        }
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            title: 'Error',
+                            text: "Checkin Error",
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    });
 
                 // Stop scanning after a successful detection (optional)
                 html5QrCode.stop().then(() => {
@@ -166,7 +200,7 @@
                 });
 
                 // You can send qrCode to your server for further processing here
-                postQrCodeData(qrCode);
+                // postQrCodeData(qrCode);
             },
             errorMessage => {
                 // If you need to display any error message, you can use this
@@ -178,11 +212,11 @@
     }
 
     function postQrCodeData(qrCode) {
-        fetch('/api/qr-check', {
+        fetch('http://localhost:8000/api/qr-check', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': `{{ csrf_token() }}`
+                    'X-CSRF-TOKEN': {{ csrf_token() }}
                 },
                 body: JSON.stringify({
                     qrCode: qrCode // Send the QR code data

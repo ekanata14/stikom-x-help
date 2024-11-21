@@ -59,13 +59,13 @@ class UsersController extends Controller
     public function completeProfileEmail()
     {
         $users = User::where('id_user_type', '=', '8')->get();
+        return $users;
 
-        // foreach ($users as $user) {
-        //     $user->email_verified_at = now();
-        //     $user->save();
-        //     Mail::to($user->email)->send(new CompleteProfileMail($user->email));
-        // }
-        Mail::to("ekanata1411@gmail.com")->send(new CompleteProfileMail("ekanata1411@gmail.com"));
+        foreach ($users as $user) {
+            $user->email_verified_at = now();
+            $user->save();
+            Mail::to($user->email)->send(new CompleteProfileMail($user->email));
+        }
 
         return back()->with('success', 'Email sent successfully.');
     }

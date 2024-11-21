@@ -157,7 +157,7 @@
             qrCode => {
                 // When a QR code is detected, handle the result
                 console.log("QR Code detected: ", qrCode);
-                fetch('{{ env('APP_URL') }}/api/checkin/store', {
+                fetch('{{ env('APP_URL') }}api/checkin/store', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',

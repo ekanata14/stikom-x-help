@@ -21,6 +21,40 @@
         [x-cloak] {
             display: none;
         }
+
+        /* Animation for the success message */
+        .animate-detected {
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                background-color: rgba(0, 255, 0, 0.2);
+            }
+
+            50% {
+                background-color: rgba(0, 255, 0, 0.5);
+            }
+
+            100% {
+                background-color: rgba(0, 255, 0, 0.2);
+            }
+        }
+
+        /* Styling for the success message */
+        .qr-detected-message {
+            display: none;
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 255, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+        }
     </style>
 
     <!-- Scripts -->
@@ -95,4 +129,5 @@
         </script>
     @endif
 </body>
+
 </html>

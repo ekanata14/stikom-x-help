@@ -8,7 +8,7 @@
 
     <section>
         <a class="container d-flex justify-content-center align-items-center" href="#">
-            <img src="assets/images/poster4.jpg" alt="Bootstrap" width="100%" height="100%" />
+            <img src="assets/images/flyernew.jpg" alt="Bootstrap" width="100%" height="100%" />
         </a>
     </section>
 

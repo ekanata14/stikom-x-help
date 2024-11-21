@@ -59,6 +59,9 @@ Route::middleware(['AuthAdmin'])->group(function () {
     Route::post('/user-types/update', [UserTypeController::class, 'update'])->name('user-types.update');
     Route::delete('/user-types/{id}', [UserTypeController::class, 'destroy'])->name('user-types.destroy');
 
+    // User Type Detail
+    Route::get('/user-types/detail/{id}', [UserTypeController::class, 'userTypeDetail'])->name('user-types.detail');
+
     // Cart Routes
     Route::get('carts', [CartController::class, 'index'])->name('carts.index');      // Menampilkan semua carts
     Route::get('carts/create', [CartController::class, 'create'])->name('carts.create'); // Form untuk membuat cart baru

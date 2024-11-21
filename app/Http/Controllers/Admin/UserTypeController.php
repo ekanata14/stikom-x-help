@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 // Models
 use App\Models\UserType;
+use App\Models\User;
 
 class UserTypeController extends Controller
 {
@@ -22,6 +23,17 @@ class UserTypeController extends Controller
         ];
 
         return view('admin-dashboard.user-types.index', $viewData);
+    }
+
+    public function userTypeDetail(string $id){
+        $viewData = [
+            'title' => 'User Type Detail',
+            'activePage' => 'user-types',
+            'users' => User::where('id_user_type', '=', $id)->paginate(10),
+            'userTypes' => UserType::all(),
+        ];
+
+        return view('admin-dashboard.users.index', $viewData);
     }
 
     /**

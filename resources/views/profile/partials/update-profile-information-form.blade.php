@@ -109,6 +109,16 @@
                     <x-form.error :messages="$errors->get('front_degree')" />
                 </div>
 
+                <!-- Occupation -->
+                <div class="space-y-2">
+                    <x-form.label for="identity id" :value="__('Identity Id (NIM)')" />
+
+                    <x-form.input id="identityId" name="identity_id" type="text" class="block w-full"
+                        :value="old('identity_id', $user->identity_id)" autocomplete="identity_id" />
+
+                    <x-form.error :messages="$errors->get('front_degree')" />
+                </div>
+
                 <!-- Student Card -->
                 <div class="space-y-2">
                     <x-form.label for="identity_card" :value="__('Identity Card')" />

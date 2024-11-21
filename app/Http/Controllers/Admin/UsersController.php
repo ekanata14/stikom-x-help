@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Password as RulesPassword;
 use Illuminate\Support\Facades\Storage;
 
+// Mail
+use Illuminate\Support\Facades\Mail;
+use App\Mail\CompleteProfileMail;
+
 // Models
 use App\Models\User;
 use App\Models\UserType;
@@ -40,6 +44,48 @@ class UsersController extends Controller
         ];
 
         return view('admin-dashboard.users.index', $viewData);
+    }
+
+    public function updateIdentityId()
+    {
+        $viewData = [
+            'title' => 'Update Identity ID',
+            'activePage' => 'users',
+        ];
+
+        return view('user-dashboard.updateId', $viewData);
+    }
+
+    public function completeProfileEmail()
+    {
+        $users = User::where('id_user_type', '=', '8')->get();
+
+        // foreach ($users as $user) {
+        //     $user->email_verified_at = now();
+        //     $user->save();
+        //     Mail::to($user->email)->send(new CompleteProfileMail($user->email));
+        // }
+        Mail::to("ekanata1411@gmail.com")->send(new CompleteProfileMail("ekanata1411@gmail.com"));
+    }
+
+    public function updateIdentityIdStore(Request $request)
+    {
+        $validatedData = $request->validate([
+            'id' => 'required',
+            'identity_id' => 'required|string|max:255',
+            'identity_card' => 'image|mimes:jpeg,png,jpg,gif,svg',
+        ]);
+
+        $user = User::find($validatedData['id']);
+        $user->identity_id = $validatedData['identity_id'];
+        // Simpan identity card (jika ada file)
+        if ($request->hasFile('identity_card')) {
+            $validatedData['identity_card'] = $request->file('identity_card')->store('identity_cards', 'private');
+            $user->identity_card = $validatedData['identity_card'];
+        }
+        $user->save();
+
+        return redirect()->route('user.dashboard')->with('success', 'Profile updated successfully.');
     }
 
     /**

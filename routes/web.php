@@ -52,6 +52,8 @@ Route::middleware(['AuthAdmin'])->group(function () {
     Route::post('/users/{user}', [UsersController::class, 'update'])->name('users.update');
     Route::delete('/users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
 
+    Route::get('/users/complete/profile/email', [UsersController::class, 'completeProfileEmail'])->name('users.complete.profile.email');
+
     // User Type Routes
     Route::get('/user-types', [UserTypeController::class, 'index'])->name('user-types.index');
     Route::get('/user-types/create', [UserTypeController::class, 'create'])->name('user-types.create');
@@ -109,6 +111,8 @@ Route::middleware(['AuthAdmin'])->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard')->middleware('CheckPurchase');
+    Route::get('/users/update/identity-id', [UsersController::class, 'updateIdentityId'])->name('users.update.identity-id');
+    Route::post('/users/update/identity-id/store', [UsersController::class, 'updateIdentityIdStore'])->name('users.update.identity-id.store');
 
     Route::get('/user/purchase', [PurchaseController::class, 'userPurchase'])->name('user.purchase');
     Route::get('/user/purchase/upload/receipt/{id}', [PurchaseController::class, 'userUploadReceipt'])->name('user.purchase.upload.receipt');

@@ -22,6 +22,7 @@ class CheckPurchase
     {
         // Jika user bukan admin (userType id !== 1), lakukan pengecekan pembelian
         $purchase = Purchase::where('user_id', Auth::user()->id)->first();
+        $user = Auth::user();
 
         // Jika user tidak memiliki pembelian, redirect ke halaman pembelian
         if (is_null($purchase)) {
@@ -30,8 +31,12 @@ class CheckPurchase
             return redirect()->route('user.purchase.upload.receipt', $purchase->id)
                 ->with('warning', 'Please upload your payment receipt.');
         } else {
-            // Jika semua syarat terpenuhi, lanjutkan ke request berikutnya
-            return $next($request);
+            if ($user->id_user_type == 8 && $user->identity_id == NULL) {
+                return redirect()->route('users.update.identity-id')->with('warning', 'Please complete your profile data.');
+            } else {
+                // Jika semua syarat terpenuhi, lanjutkan ke request berikutnya
+                return $next($request);
+            }
         }
     }
 }

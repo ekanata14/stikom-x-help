@@ -29,7 +29,7 @@ class CompleteProfileMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Please Complete Your Profile (NIM or Student Card)')
+        return $this->subject('Complete Your NIM or Student Card Data And QR Code for Attendance Information')
                     ->view('emails.complete-profile')
                     ->with('email', $this->email);
     }

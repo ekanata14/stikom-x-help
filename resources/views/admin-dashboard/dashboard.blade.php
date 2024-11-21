@@ -22,11 +22,12 @@
             <div
                 class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center text-center">
                 <div class="p-5">
-                    Total Users: {{ $totalUsers }} 
-                    <a href="{{ route('users.complete.profile.email') }}"></a>
-                    <x-button class="justify-center w-full gap-2 mt-6">
-                        <span>{{ __('Complete Profile Email') }}</span>
-                    </x-button>
+                    Total Users: {{ $totalUsers }}
+                    <a href="{{ route('users.complete.profile.email') }}">
+                        <x-button class="justify-center w-full gap-2 mt-6">
+                            <span>{{ __('Complete Profile Email') }}</span>
+                        </x-button>
+                    </a>
                 </div>
             </div>
             {{-- card-end --}}

@@ -176,7 +176,7 @@
                                 text: data.message,
                                 icon: 'success',
                                 confirmButtonText: 'OK',
-                                timer: 2000
+                                timer: 5000
                             });
                             setTimeout(() => {
                                 openCamera();
@@ -188,7 +188,8 @@
                             title: 'Error',
                             text: "Checkin Error",
                             icon: 'error',
-                            confirmButtonText: 'OK'
+                            confirmButtonText: 'OK',
+                            timer: 5000
                         });
                     });
 

@@ -8,7 +8,7 @@
 
     <section>
         <a class="container d-flex justify-content-center align-items-center" href="#">
-            <img src="assets/images/poster4.jpg" alt="Bootstrap" width="100%" height="100%" />
+            <img src="assets/images/flyernew.jpg" alt="Bootstrap" width="100%" height="100%" />
         </a>
     </section>
 
@@ -143,7 +143,7 @@
               >
                 <h3>
                   REGISTRATION
-                  <a style="color: red">VALID UNTIL 20 NOVEMBER 2024</a>
+                  <a style="color: red">VALID UNTIL 21 NOVEMBER 2024</a>
                 </h3>
               </div> 
 

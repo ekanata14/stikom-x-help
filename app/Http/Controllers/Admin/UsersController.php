@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Password as RulesPassword;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
+
+// Data Export
+use App\Exports\UserDataExport;
 
 // Mail
 use Illuminate\Support\Facades\Mail;
@@ -23,6 +27,12 @@ class UsersController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function userDataExport()
+    {
+
+        return Excel::download(new UserDataExport, 'users.xlsx');
+    }
+
     public function index()
     {
         $viewData = [

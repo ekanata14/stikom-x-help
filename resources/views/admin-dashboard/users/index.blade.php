@@ -12,6 +12,9 @@
                     <x-button href="{{ route('users.create') }}" variant="primary" class="justify-center max-w-xs gap-2">
                         <span>Add User</span>
                     </x-button>
+                    <x-button href="{{ route('users.export') }}" variant="success" class="justify-center max-w-xs gap-2">
+                        <span>Export Excel</span>
+                    </x-button>
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-3">
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                             <thead

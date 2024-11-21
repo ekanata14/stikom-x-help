@@ -9,6 +9,12 @@
         <div class="w-full mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
+                    <x-button href="{{ route('purchase.export.pending') }}" variant="success" class="justify-center max-w-xs gap-2">
+                        <span>Export Pending Purchases</span>
+                    </x-button>
+                    <x-button href="{{ route('purchase.export.paid') }}" variant="success" class="justify-center max-w-xs gap-2">
+                        <span>Export Paid Purchases</span>
+                    </x-button>
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-3">
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                             <thead

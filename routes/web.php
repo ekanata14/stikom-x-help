@@ -43,6 +43,7 @@ Route::middleware(['AuthAdmin'])->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
     // User Routes
+    Route::get('/users/export', [UsersController::class, 'userDataExport'])->name('users.export');
     Route::get('/users', [UsersController::class, 'index'])->name('users.index');
     Route::get('/users/admin', [UsersController::class, 'admin'])->name('users.admin');
     Route::get('/users/create', [UsersController::class, 'create'])->name('users.create');
@@ -87,6 +88,8 @@ Route::middleware(['AuthAdmin'])->group(function () {
     Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
 
     // Purchase Routes
+    Route::get('/purchase/export/pending', [PurchaseController::class, 'purchasePendingExport'])->name('purchase.export.pending');
+    Route::get('/purchase/export/paid', [PurchaseController::class, 'purchasePaidExport'])->name('purchase.export.paid');
     Route::get('/purchase', [PurchaseController::class, 'index'])->name('purchase.index');
     Route::get('/purchase/verified', [PurchaseController::class, 'verified'])->name('purchase.verified');
     Route::get('/purchase/create', [PurchaseController::class, 'create'])->name('purchase.create');

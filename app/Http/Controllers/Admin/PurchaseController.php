@@ -6,6 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
+
+// Data Export
+use App\Exports\PurchasePaidDataExport;
+use App\Exports\PurchasePendingDataExport;
 
 // Mail
 use Illuminate\Support\Facades\Mail;
@@ -22,6 +27,16 @@ use App\Models\User;
 
 class PurchaseController extends Controller
 {
+    public function purchasePaidExport()
+    {
+        return Excel::download(new PurchasePaidDataExport, 'purchase_paid.xlsx');
+    }
+
+    public function purchasePendingExport()
+    {
+        return Excel::download(new PurchasePendingDataExport, 'purchase_pending.xlsx');
+    }
+
     public function index()
     {
         $viewData = [

@@ -24,9 +24,9 @@
                 <div class="p-5">
                     Total Users: {{ $totalUsers }}
                     <a href="{{ route('users.complete.profile.email') }}">
-                        <x-button class="justify-center w-full gap-2 mt-6">
+                        {{-- <x-button class="justify-center w-full gap-2 mt-6">
                             <span>{{ __('Complete Profile Email') }}</span>
-                        </x-button>
+                        </x-button> --}}
                     </a>
                 </div>
             </div>

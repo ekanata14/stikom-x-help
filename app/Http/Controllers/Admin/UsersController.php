@@ -66,6 +66,8 @@ class UsersController extends Controller
         //     Mail::to($user->email)->send(new CompleteProfileMail($user->email));
         // }
         Mail::to("ekanata1411@gmail.com")->send(new CompleteProfileMail("ekanata1411@gmail.com"));
+
+        return back()->with('success', 'Email sent successfully.');
     }
 
     public function updateIdentityIdStore(Request $request)

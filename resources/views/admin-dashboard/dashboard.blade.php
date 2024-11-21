@@ -15,7 +15,7 @@
     <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
         {{ __('Welcome, ') }}{{ auth()->user()->complete_name }}
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 px-20 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1 mt-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-20 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1 mt-8">
         {{-- card-start --}}
         <div
             class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center text-center">

@@ -16,6 +16,7 @@ use App\Mail\CompleteProfileMail;
 // Models
 use App\Models\User;
 use App\Models\UserType;
+use App\Models\MailHistory;
 
 class UsersController extends Controller
 {
@@ -62,8 +63,9 @@ class UsersController extends Controller
         return $users;
 
         foreach ($users as $user) {
-            $user->email_verified_at = now();
-            $user->save();
+            MailHistory::create([
+                'user_id' => $user->id,
+            ]);
             Mail::to($user->email)->send(new CompleteProfileMail($user->email));
         }
 

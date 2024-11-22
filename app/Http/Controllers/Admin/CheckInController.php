@@ -50,7 +50,7 @@ class CheckInController extends Controller
         $user = Purchase::where('status', '=' , 'paid')->get();
         foreach ($user as $u) {
             MailHistory::create([
-                'user_id' => $user->$user->id,
+                'user_id' => $user->user_id,
             ]);
             Mail::to($u->user->email)->send(new QrCodeMail($u->user_id));
         }

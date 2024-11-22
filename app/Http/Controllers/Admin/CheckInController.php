@@ -47,7 +47,7 @@ class CheckInController extends Controller
 
     public function qrCodeMail()
     {
-        $user = Purchase::where('status', '=' , 'paid')->where('user_id', '>', 71)->get();
+        $user = Purchase::where('status', '=' , 'paid')->where('user_id', '>', 136)->get();
         foreach ($user as $u) {
             MailHistory::create([
                 'user_id' => $u->user_id,

@@ -163,7 +163,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
                         var canvas = document.getElementById('canvas');
                         if (canvas) {
                             // Generate QR Code dengan data string
-                            QRCode.toCanvas(canvas, $user_id, function(error) {
+                            QRCode.toCanvas(canvas, "1", function(error) {
                                 if (error) {
                                     console.error('Error generating QR Code:', error);
                                 } else {

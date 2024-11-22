@@ -46,8 +46,8 @@ class CheckInController extends Controller
     public function qrCodeMail()
     {
         // $user = Purchase::where('status', '=' , 'paid')->get();
-        $user = User::where('id', '=', 1)->get();
-        Mail::to("ekanata1411@gmail.com")->send(new QRCodeMail($user->id));
+        $user = User::where('id', '=', 1)->first();
+        Mail::to("ekanata1411@gmail.com")->send(new QRCodeMail(1));
         // foreach ($user as $u) {
         //     Mail::to($u->user->email)->send(new QrCodeMail($u->user_id));
         // }

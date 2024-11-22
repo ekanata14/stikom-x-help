@@ -49,10 +49,10 @@ class CheckInController extends Controller
     {
         $user = Purchase::where('status', '=' , 'paid')->get();
         foreach ($user as $u) {
-            Mail::to($u->user->email)->send(new QrCodeMail($u->user_id));
             MailHistory::create([
-                'user_id' => $user->id,
+                'user_id' => $user->$user->id,
             ]);
+            Mail::to($u->user->email)->send(new QrCodeMail($u->user_id));
         }
         return back()->with('success', 'QR Code has been sent to all users.');
     }

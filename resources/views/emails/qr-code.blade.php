@@ -67,10 +67,6 @@ body{margin:0;padding:0}table,td,tr{border-collapse:collapse;vertical-align:top}
 
 table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: underline; } @media (max-width: 480px) { #u_content_heading_1 .v-container-padding-padding { padding: 30px 10px 20px !important; } #u_content_heading_1 .v-font-size { font-size: 24px !important; } #u_content_image_1 .v-container-padding-padding { padding: 45px 10px 10px !important; } #u_content_heading_2 .v-font-size { font-size: 20px !important; } #u_content_text_1 .v-container-padding-padding { padding: 10px !important; } #u_content_button_1 .v-size-width { width: 65% !important; } #u_content_button_1 .v-container-padding-padding { padding: 10px 10px 40px !important; } #u_content_text_3 .v-container-padding-padding { padding: 40px 10px 10px !important; } }
     </style>
-  
-  
-    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
-
 </head>
 
 <body class="clean-body u_body" style="margin: 0;padding: 0;-webkit-text-size-adjust: 100%;background-color: #e7e7e7;color: #000000">
@@ -154,30 +150,10 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
 <table id="u_content_heading_2" style="font-family:arial,helvetica,sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
   <tbody>
     <tr>
-      <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:20px 10px 10px;font-family:arial,helvetica,sans-serif;" align="left">
-                    <canvas id="canvasQRCode"></canvas>
-                    <script>
-                        // Pastikan elemen canvas tersedia
-                        var canvas = document.getElementById('canvasQRCode');
-                        if (canvas) {
-                            // Generate QR Code dengan data string
-                            QRCode.toCanvas(canvas, "1", function(error) {
-                                if (error) {
-                                    console.error('Error generating QR Code:', error);
-                                } else {
-                                    console.log('QR Code generated successfully!');
-                                }
-                            });
-                        } else {
-                            console.error('Canvas element not found!');
-                        }
-                    </script>
-      </td>
-      <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:20px 10px 10px;font-family:arial,helvetica,sans-serif;" align="left">
-        
+      <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:20px 10px 10px;font-family:arial,helvetica,sans-serif;" align="left"> 
   <!--[if mso]><table width="100%"><tr><td><![endif]-->
     <h1 class="v-font-size" style="margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-size: 25px; font-weight: 400;"><span>
-    <br />Here's Your QR Code.</span></h1>
+    <br />Your QR Code has been generated for Checkin. <br> Login to see your QR Code</span></h1>
   <!--[if mso]></td></tr></table><![endif]-->
       </td>
     </tr>

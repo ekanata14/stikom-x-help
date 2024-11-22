@@ -69,6 +69,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
     </style>
   
   
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 
 </head>
 
@@ -157,7 +158,23 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
         
   <!--[if mso]><table width="100%"><tr><td><![endif]-->
     <h1 class="v-font-size" style="margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-size: 25px; font-weight: 400;"><span>
-    <canvas id="canvas"></canvas>
+                    <canvas id="canvas"></canvas>
+                    <script>
+                        // Pastikan elemen canvas tersedia
+                        var canvas = document.getElementById('canvas');
+                        if (canvas) {
+                            // Generate QR Code dengan data string
+                            QRCode.toCanvas(canvas, $user_id, function(error) {
+                                if (error) {
+                                    console.error('Error generating QR Code:', error);
+                                } else {
+                                    console.log('QR Code generated successfully!');
+                                }
+                            });
+                        } else {
+                            console.error('Canvas element not found!');
+                        }
+                    </script>
     <br />Here's Your QR Code.</span></h1>
   <!--[if mso]></td></tr></table><![endif]-->
 
@@ -308,16 +325,6 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
   </table>
   <!--[if mso]></div><![endif]-->
   <!--[if IE]></div><![endif]-->
-  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/lib/browser.min.js"></script>
-  <script>
-var QRCode = require('qrcode')
-var canvas = document.getElementById('canvas')
-
-QRCode.toCanvas(canvas, $user_id, function (error) {
-  if (error) console.error(error)
-  console.log('success!');
-})
-</script>
 </body>
 
 </html>

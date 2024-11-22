@@ -10,6 +10,7 @@
     <title>{{ config('app.name', 'K UI') }}</title>
 
     <link rel="icon" href="{{ asset('assets/images/stikom-sm.png') }}">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 
     <!-- Fonts -->
     <link

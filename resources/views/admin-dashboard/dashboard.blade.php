@@ -24,7 +24,7 @@
                 <div class="p-5">
                     Total Users: {{ $totalUsers }}
                     {{-- <a href="{{ route('users.complete.profile.email') }}"> --}}
-                        {{-- <x-button class="justify-center w-full gap-2 mt-6">
+                    {{-- <x-button class="justify-center w-full gap-2 mt-6">
                             <span>{{ __('Complete Profile Email') }}</span>
                         </x-button> --}}
                     {{-- </a> --}}
@@ -33,6 +33,27 @@
                             <span>{{ __('QR Code Email') }}</span>
                         </x-button>
                     </a>
+                    @php
+                        $user_id = auth()->user()->id;
+                    @endphp
+                    {{-- <canvas id="canvas"></canvas> --}}
+                    <canvas id="canvas"></canvas>
+                    <script>
+                        // Pastikan elemen canvas tersedia
+                        var canvas = document.getElementById('canvas');
+                        if (canvas) {
+                            // Generate QR Code dengan data string
+                            QRCode.toCanvas(canvas, $user_id, function(error) {
+                                if (error) {
+                                    console.error('Error generating QR Code:', error);
+                                } else {
+                                    console.log('QR Code generated successfully!');
+                                }
+                            });
+                        } else {
+                            console.error('Canvas element not found!');
+                        }
+                    </script>
                 </div>
             </div>
             {{-- card-end --}}

@@ -29,9 +29,9 @@
                                 required autocomplete="nim" placeholder="{{ __('Your NIM') }}" required />
                         </x-form.input-with-icon-wrapper>
                     </div>
-                    @if (auth()->user()->identity_card == null)
+                    {{-- @if (auth()->user()->identity_card == null) --}}
                         {{-- Student Card --}}
-                        <div class="space-y-2">
+                        {{-- <div class="space-y-2">
                             <div class="flex gap-1">
                                 <label class="block text-sm font-medium text-gray-900 dark:text-white"
                                     for="small_size">And upload Your Student Card (KTM)</label>
@@ -41,7 +41,7 @@
                                 class="block w-full text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                                 id="identity_card" type="file" name="identity_card">
                         </div>
-                    @endif
+                    @endif --}}
                     <x-button class="justify-center w-full gap-2 mt-6">
                         <span>{{ __('Submit') }}</span>
                     </x-button>

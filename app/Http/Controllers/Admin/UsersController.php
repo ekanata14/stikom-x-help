@@ -86,16 +86,16 @@ class UsersController extends Controller
         $validatedData = $request->validate([
             'id' => 'required',
             'identity_id' => 'required|string|max:255',
-            'identity_card' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            // 'identity_card' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
         $user = User::find($validatedData['id']);
         $user->identity_id = $validatedData['identity_id'];
         // Simpan identity card (jika ada file)
-        if ($request->hasFile('identity_card')) {
-            $validatedData['identity_card'] = $request->file('identity_card')->store('identity_cards', 'private');
-            $user->identity_card = $validatedData['identity_card'];
-        }
+        // if ($request->hasFile('identity_card')) {
+        //     $validatedData['identity_card'] = $request->file('identity_card')->store('identity_cards', 'private');
+        //     $user->identity_card = $validatedData['identity_card'];
+        // }
         $user->save();
 
         return redirect()->route('user.dashboard')->with('success', 'Profile updated successfully.');

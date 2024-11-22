@@ -6,10 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CheckIn;
 use Illuminate\Http\Request;
 use Zxing\QrReader;
-use App\Models\User;
-use App\Models\Purchase;
 use Illuminate\Support\Facades\Mail;
-
 use Maatwebsite\Excel\Facades\Excel;
 
 // Data Export
@@ -17,6 +14,11 @@ use App\Exports\CheckinDataExport;
 
 // Mail
 use App\Mail\QRCodeMail;
+
+// Models
+use App\Models\MailHistory;
+use App\Models\User;
+use App\Models\Purchase;
 
 
 class CheckInController extends Controller
@@ -45,12 +47,13 @@ class CheckInController extends Controller
 
     public function qrCodeMail()
     {
-        // $user = Purchase::where('status', '=' , 'paid')->get();
-        $user = User::where('id', '=', 1)->first();
-        Mail::to("ekanata1411@gmail.com")->send(new QRCodeMail(1));
-        // foreach ($user as $u) {
-        //     Mail::to($u->user->email)->send(new QrCodeMail($u->user_id));
-        // }
+        $user = Purchase::where('status', '=' , 'paid')->get();
+        foreach ($user as $u) {
+            Mail::to($u->user->email)->send(new QrCodeMail($u->user_id));
+            MailHistory::create([
+                'user_id' => $user->id,
+            ]);
+        }
         return back()->with('success', 'QR Code has been sent to all users.');
     }
 

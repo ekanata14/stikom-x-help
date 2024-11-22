@@ -16,9 +16,27 @@
                         Check In
                     </button>
 
-                    <x-button href="{{ route('checkin.export') }}" variant="success" class="justify-center max-w-xs gap-2">
+                    <x-button href="{{ route('checkin.export') }}" variant="success"
+                        class="justify-center max-w-xs gap-2">
                         <span>Export Excel Checkin</span>
                     </x-button>
+
+                    <form action="{{ route('checkin.email') }}" method="POST" class="mt-6">
+                        @csrf
+                        <x-form.input-with-icon-wrapper>
+                            <x-slot name="icon">
+                                <x-heroicon-o-mail aria-hidden="true" class="w-5 h-5" />
+                            </x-slot>
+
+                            <x-form.input withicon id="email" class="block w-full" type="email" name="email"
+                                :value="old('email')" required placeholder="{{ __('Email') }}" required />
+                        </x-form.input-with-icon-wrapper>
+                        <x-button class="justify-center w-full md:w-1/4 gap-2 mt-6">
+                            <x-heroicon-o-user-add class="w-6 h-6" aria-hidden="true" />
+                            <span>{{ __('Check In') }}</span>
+                        </x-button>
+
+                    </form>
 
                     <!-- Main modal -->
                     <div id="checkin-modal" tabindex="-1" aria-hidden="true"

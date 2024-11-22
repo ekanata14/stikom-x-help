@@ -47,7 +47,7 @@ class CheckInController extends Controller
 
     public function qrCodeMail()
     {
-        $user = Purchase::where('status', '=' , 'paid')->where('user_id', '>', 136)->get();
+        $user = Purchase::where('status', '=' , 'paid')->get();
         foreach ($user as $u) {
             MailHistory::create([
                 'user_id' => $u->user_id,
@@ -110,6 +110,24 @@ class CheckInController extends Controller
                 'message' => 'Failed to check in',
                 'error' => $e->getMessage(),
             ], 500);
+        }
+    }
+
+    public function checkInByEmail(Request $request){
+        $user = User::where('email', $request->email)->first();
+        $checkInCheck = CheckIn::where('user_id', $user->id)->first();
+
+        try {
+            if ($checkInCheck) {
+                return back()->with('success', $user->complete_name . ' already checked in');
+            } else {
+                CheckIn::create([
+                    'user_id' => $user->id,
+                ]);
+                return back()->with('success', 'Check in success');
+            }
+        } catch (\Exception $e) {
+            return back()->with('error', 'Failed to check in');
         }
     }
 

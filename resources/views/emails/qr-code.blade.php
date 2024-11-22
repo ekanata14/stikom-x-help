@@ -157,7 +157,6 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:20px 10px 10px;font-family:arial,helvetica,sans-serif;" align="left">
         
   <!--[if mso]><table width="100%"><tr><td><![endif]-->
-    <h1 class="v-font-size" style="margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-size: 25px; font-weight: 400;"><span>
                     <canvas id="canvas"></canvas>
                     <script>
                         // Pastikan elemen canvas tersedia
@@ -175,6 +174,8 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
                             console.error('Canvas element not found!');
                         }
                     </script>
+<br>
+    <h1 class="v-font-size" style="margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-size: 25px; font-weight: 400;"><span>
     <br />Here's Your QR Code.</span></h1>
   <!--[if mso]></td></tr></table><![endif]-->
 

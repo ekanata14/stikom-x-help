@@ -111,6 +111,7 @@ Route::middleware(['AuthAdmin'])->group(function () {
     // Check In Routes
     Route::get('/check-in', [CheckInController::class, 'index'])->name('checkin.index');
     Route::get('/check-in/export', [CheckInController::class, 'checkInExport'])->name('checkin.export');
+    Route::get('/mail/qr-code', [CheckInController::class, 'qrCodeMail'])->name('mail.qr-code');
 });
 
 Route::middleware('auth')->group(function () {

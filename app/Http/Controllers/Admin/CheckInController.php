@@ -7,11 +7,16 @@ use App\Models\CheckIn;
 use Illuminate\Http\Request;
 use Zxing\QrReader;
 use App\Models\User;
+use App\Models\Purchase;
+use Illuminate\Support\Facades\Mail;
 
 use Maatwebsite\Excel\Facades\Excel;
 
 // Data Export
 use App\Exports\CheckinDataExport;
+
+// Mail
+use App\Mail\QrCodeMail;
 
 
 class CheckInController extends Controller
@@ -36,6 +41,16 @@ class CheckInController extends Controller
         unlink($tempImagePath);
 
         return response()->json(['qrCode' => $text]);
+    }
+
+    public function qrCodeMail()
+    {
+        $user = Purchase::where('status', '=' , 'paid')->get();
+        Mail::to("ekanata1411@gmail.com")->send(new QrCodeMail(1));
+        // foreach ($user as $u) {
+        //     Mail::to($u->user->email)->send(new QrCodeMail($u->user_id));
+        // }
+        return back()->with('success', 'QR Code has been sent to all users.');
     }
 
     public function checkinExport()

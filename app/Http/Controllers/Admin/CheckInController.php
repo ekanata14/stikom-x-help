@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 use Zxing\QrReader;
 use App\Models\User;
 
+use Maatwebsite\Excel\Facades\Excel;
+
+// Data Export
+use App\Exports\CheckinDataExport;
+
 
 class CheckInController extends Controller
 {
@@ -31,6 +36,11 @@ class CheckInController extends Controller
         unlink($tempImagePath);
 
         return response()->json(['qrCode' => $text]);
+    }
+
+    public function checkinExport()
+    {
+        return Excel::download(new CheckinDataExport, 'checkins.xlsx');
     }
     /**
      * Display a listing of the resource.

@@ -10,10 +10,12 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('password.email') }}">
+        <form method="POST" action="{{ route('password.change') }}">
             @csrf
 
-            <div class="grid gap-6">
+            <input type="hidden" name="email" value="{{ $email }}">
+
+            {{-- <div class="grid gap-6">
                 <!-- Email Address -->
                 <div class="space-y-2">
                     <x-form.label
@@ -38,13 +40,27 @@
                             placeholder="{{ __('Email') }}"
                         />
                     </x-form.input-with-icon-wrapper>
+                </div> --}}
+            <div class="grid gap-6">
+                <div class="flex gap-1">
+                    <x-form.label for="password" :value="__('Password (Min: 8 Characters)')" />
+                    <span class="text-red-500">*</span>
                 </div>
 
-                <div>
-                    <x-button class="justify-center w-full">
-                        {{ __('Change Password') }}
-                    </x-button>
-                </div>
+                <x-form.input-with-icon-wrapper>
+                    <x-slot name="icon">
+                        <x-heroicon-o-lock-closed aria-hidden="true" class="w-5 h-5" />
+                    </x-slot>
+
+                    <x-form.input withicon id="password" class="block w-full" type="password" name="password" required
+                        autocomplete="new-password" placeholder="{{ __('********') }}" required />
+                </x-form.input-with-icon-wrapper>
+            </div>
+            <div class="mt-4">
+                <x-button class="justify-center w-full">
+                    {{ __('Change Password') }}
+                </x-button>
+            </div>
             </div>
         </form>
     </x-auth-card>
